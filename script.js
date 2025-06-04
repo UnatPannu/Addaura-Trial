@@ -1,0 +1,175 @@
+
+
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('active');
+  });
+const marquees = document.querySelectorAll(".marquee");
+
+marquees.forEach((marquee) => {
+  const content = marquee.querySelector(".marquee-content");
+  const originalHTML = content.innerHTML;
+
+  while (marquee.scrollWidth < window.innerWidth * 2) {
+    content.innerHTML += originalHTML;
+  }
+});
+//Glitch Effect
+document.addEventListener("DOMContentLoaded", () => {
+  const glitchImage = document.querySelector('.glitch-image');
+  const pixelGrid = glitchImage.querySelector('.pixel-grid');
+
+  for (let i = 0; i < 10000; i++) {
+    const pixel = document.createElement('div');
+    const delay = (Math.random() * 1).toFixed(2);
+    pixel.style.transitionDelay = `${delay}s`;
+    pixelGrid.appendChild(pixel);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        glitchImage.classList.add('visible');
+      } else {
+        glitchImage.classList.remove('visible');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(glitchImage);
+});
+//Testimonials Logo Scroller
+const logoContainer = document.querySelector('.logo-container');
+const logos = document.querySelectorAll('.testimonial-logo');
+const logosVisible = 5; // number of logos visible at once
+
+const scrollAmount = logoContainer.clientWidth / logosVisible;
+let currentScroll = 0;
+
+function scrollToNextLogo() {
+  currentScroll += scrollAmount;
+  if (currentScroll >= logoContainer.scrollWidth - logoContainer.clientWidth) {
+    currentScroll = 0;
+  }
+  logoContainer.scrollTo({
+    left: currentScroll,
+    behavior: 'smooth',
+  });
+}
+
+setInterval(scrollToNextLogo, 2000);
+
+
+
+//Teams And Talent Scroll Animation
+window.addEventListener("load", function () {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const heading = document.querySelector(".teams-talent .heading");
+  const sections = gsap.utils.toArray(".teams-talent .section");
+  const headingTitle = heading.querySelector("h3");
+  const headingDesc = heading.querySelector("p");
+  const headingList = heading.querySelector(".heading-list");
+
+  // Initial text
+  headingTitle.textContent = "For Teams and Talent";
+  headingDesc.textContent = "Addaura adapts to your hiring needs in Fintech, Greentech, and AI.";
+
+  let textChanged = false;
+
+  // Get heading height dynamically
+  const headingHeight = heading.offsetHeight;
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".teams-talent",
+      start: `top+=${headingHeight+100} bottom`,  // Start when top of teams-talent + headingHeight hits bottom viewport
+      end: "+=300%",
+      scrub: true,
+      pin: true,
+      markers: false
+    }
+  });
+
+  // Animate heading block
+  tl.to(heading, {
+    duration: 1,
+    width: "25%",
+    height: "350px",
+    y: "-30vh",
+    ease: "power1.inOut",
+    onUpdate: () => {
+      const progress = tl.progress();
+
+      if (progress > 0.3 && !textChanged) {
+        headingTitle.textContent = "Spot Hiring";
+        headingDesc.textContent = "For urgent, high-impact roles that require extra attention.";
+        heading.classList.add("spot-hiring");
+
+        headingList.innerHTML = `
+          <li>Targeted, efficient sourcing</li>
+          <li>Ideal for niche or time-sensitive hires</li>
+          <li>Process handled from sourcing to offer</li>
+        `;
+
+        textChanged = true;
+
+      } else if (progress <= 0.3 && textChanged) {
+        headingTitle.textContent = "For Teams and Talent";
+        headingDesc.textContent = "Addaura adapts to your hiring needs in Fintech, Greentech, and AI.";
+        heading.classList.remove("spot-hiring");
+
+        headingList.innerHTML = ""; // Clear list
+
+        textChanged = false;
+      }
+    }
+  });
+
+  // Reset and animate side sections
+  sections.forEach((section) => {
+    gsap.set(section, {
+      opacity: 0,
+      x: 0,
+      zIndex: 0,
+      position: "absolute",
+      top: "-30vh",
+      width: "25%"
+    });
+  });
+
+  tl.to(sections[0], {
+    duration: 1,
+    opacity: 1,
+    x: "-110%",
+    ease: "power2.out",
+    zIndex: 1,
+  }, ">0.5");
+
+  tl.to(sections[2], {
+    duration: 1,
+    opacity: 1,
+    x: "110%",
+    ease: "power2.out",
+    zIndex: 1,
+  }, "<");
+    // Scroll to top AFTER GSAP animation setup is complete
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 50); // 50ms delay to ensure GSAP's pinning is ready
+});
+
+
+document.querySelectorAll('.form-section').forEach(section => {
+          section.addEventListener('click', function (e) {
+            const ignoreTags = ['INPUT', 'TEXTAREA', 'LABEL'];
+            if (ignoreTags.includes(e.target.tagName)) return;
+            this.classList.toggle('active');
+          });
+        });
+        document.getElementById('resume').addEventListener('change', function() {
+      const fileNames = Array.from(this.files).map(file => file.name).join(', ');
+      document.getElementById('file-name').textContent = fileNames || 'No file chosen';
+    });
