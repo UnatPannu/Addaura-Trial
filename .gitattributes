@@ -1,2 +1,5 @@
 *.gif filter=lfs diff=lfs merge=lfs -text
 *.mp4 filter=lfs diff=lfs merge=lfs -text
+*.mp4
+[[:space:]]/usr/bin/env[[:space:]]/opt/homebrew/bin/python3[[:space:]]/Users/Unat/.vscode/extensions/ms-python.debugpy-2025.8.0-darwin-arm64/bundled/libs/debugpy/adapter/../../debugpy/launcher[[:space:]]60049[[:space:]]--[[:space:]]/Users/Unat/Documents/College/Sem\\[[:space:]]3/Python/hello.py[[:space:]]
+ filter=lfs diff=lfs merge=lfs -text
