@@ -7,7 +7,7 @@
     padding:0;
 }
 html {
-    font-size: 16pt;
+    font-size: 150%;
     scroll-behavior: smooth;
 }
 body{
@@ -67,7 +67,7 @@ h6{
 }
 p{
     font-weight:var(--light-weight);
-    letter-spacing: -0.5;
+    letter-spacing: -0.5px;
     line-height:1.4;
 }
 button{
@@ -383,7 +383,7 @@ footer img{
 /*Building Teams*/
 .building-teams{
     width:100vw;
-    height:100vh;
+    min-height:100vh;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -416,7 +416,6 @@ footer img{
 /*For Teams and Talent*/
 .teams-talent {
     width: 100vw;
-    height: 50vh;
     position: relative;
     overflow: visible;
 }
@@ -446,16 +445,16 @@ footer img{
     align-items: center;     
 }
 .heading-list {
-  margin-top: 1rem;
-  padding-left: 1.5rem;
-  font-weight: var(--light-weight);
-  list-style-type: disc;
-  color: white;
-}
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    font-weight: var(--light-weight);
+    list-style-type: disc;
+    color: white;
+    }
 .heading.spot-hiring {
-  text-align: left;
-  padding-left: 2rem;
-  padding-block: 4%;
+    text-align: left;
+    padding-left: 2rem;
+    padding-block: 4%;
     padding-inline:2%;
     align-items: flex-start;
     justify-content: flex-start;
@@ -477,7 +476,7 @@ footer img{
 .teams-talent .sections-container {
     display: flex;
     justify-content: center;
-  align-items: center;  
+    align-items: center;  
     gap: 3rem;
     width: 100%;
     margin: auto;
@@ -494,7 +493,7 @@ footer img{
     flex: none;
     position: absolute; /* to stack under heading initially */
     top: -30vh; /* same vertical as final heading */
-    width: 25%;
+    width: clamp(250px, 25%, 350px);
     opacity: 0;
     pointer-events: none; /* prevent interaction while hidden */
     user-select: none;
@@ -847,5 +846,4 @@ input[type="file"] {
 .sidebar .nav-links a{
     color:black;
 }
-
 

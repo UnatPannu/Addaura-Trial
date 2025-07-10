@@ -62,6 +62,14 @@ function scrollToNextLogo() {
 setInterval(scrollToNextLogo, 2000);
 
 
+//Teams and Talent positioning
+window.addEventListener("load", function () {
+  const teamsTalent = document.querySelector(".teams-talent");
+  const screenHeight = window.innerHeight;
+
+  // Increase height based on scroll length or pin duration
+  teamsTalent.style.minHeight = `${screenHeight/2}px`; // adjust as needed
+});
 
 //Teams And Talent Scroll Animation
 window.addEventListener("load", function () {
@@ -151,4 +159,17 @@ window.addEventListener("load", function () {
       ScrollTrigger.refresh(); // recalculate scroll positions
     });
   });
+});
+const formSections = document.querySelectorAll('.form-section');
+
+formSections.forEach(section => {
+    section.addEventListener('click', function (e) {
+        if (e.target.closest('form') || e.target.classList.contains('wave-button')) return;
+        formSections.forEach(sec => sec.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+document.getElementById('resume').addEventListener('change', function () {
+    const fileNames = Array.from(this.files).map(file => file.name).join('<br/>');
+    document.getElementById('file-name').innerHTML = fileNames || 'No file chosen';
 });
