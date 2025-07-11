@@ -163,13 +163,26 @@ window.addEventListener("load", function () {
 const formSections = document.querySelectorAll('.form-section');
 
 formSections.forEach(section => {
-    section.addEventListener('click', function (e) {
-        if (e.target.closest('form') || e.target.classList.contains('wave-button')) return;
-        formSections.forEach(sec => sec.classList.remove('active'));
-        this.classList.add('active');
-    });
+  section.addEventListener('click', function (e) {
+    // Don't toggle when clicking inside the form or button
+    if (e.target.closest('form') || e.target.classList.contains('wave-button')) return;
+
+    const isActive = this.classList.contains('active');
+
+    // Remove 'active' from all
+    formSections.forEach(sec => sec.classList.remove('active'));
+
+    // Toggle only if it wasn't already active
+    if (!isActive) {
+      this.classList.add('active');
+    }
+  });
 });
-document.getElementById('resume').addEventListener('change', function () {
+document.querySelectorAll('input[type="file"]').forEach(fileInput => {
+  fileInput.addEventListener('change', function () {
+    const sectionId = this.closest('.form-section').id;
+    const fileNameSpan = document.querySelector(`#${sectionId} #file-name`);
     const fileNames = Array.from(this.files).map(file => file.name).join('<br/>');
-    document.getElementById('file-name').innerHTML = fileNames || 'No file chosen';
+    fileNameSpan.innerHTML = fileNames || 'No file chosen';
+  });
 });

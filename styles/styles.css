@@ -429,7 +429,7 @@ footer img{
     height: 150px; /* initial height */
     border-radius: 10px;
     background-color: black;
-    background-image: url('assets/teams-talent.png');
+    background-image: url('../assets/teams-talent.png');
     background-position: center;
     background-size: cover;
     color: white;
@@ -497,7 +497,7 @@ footer img{
     opacity: 0;
     pointer-events: none; /* prevent interaction while hidden */
     user-select: none;
-    background-image: url('assets/teams-talent.png');
+    background-image: url('../assets/teams-talent.png');
     background-size: cover;
     background-repeat: no-repeat;
     height: 350px;
@@ -826,6 +826,19 @@ input[type="file"] {
     to{
         background-position-x:200%;
     }
+}
+
+/*About Me Page*/
+
+/*Intro Section*/
+.intro-section{
+
+}
+.intro-card{
+    
+}
+.hidden-content{
+    display:none;
 }
 
 
