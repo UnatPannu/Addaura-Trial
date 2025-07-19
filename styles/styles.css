@@ -131,6 +131,9 @@ button{
     background-color: transparent;
     color:white;
 }
+.navbar #active{
+    font-weight:bold;
+}
 footer {
   display: flex;
   justify-content: space-between; /* or center, flex-start */
