@@ -121,10 +121,10 @@ button{
 }
 .navbar #cv-button {
     border: 2px solid white;
-    border-radius: 15px;
+    border-radius: 25px;
     background-color: white;
     padding: 5px 15px;
-    padding-top:9px;
+    padding-top:6px;
     color: black;
 }
 .navbar #cv-button:hover{
@@ -143,6 +143,7 @@ footer .contact-info{
 }
 footer h5{
     margin-bottom:2%;
+      font-weight:bold;
 }
 .footer-logos{
     margin-top:2%;
@@ -155,6 +156,7 @@ footer h5{
 }
 footer img{
     margin-right:10%;
+    height: clamp(20px, 5vw, 50px);
 }
 
 /*animations*/
@@ -829,19 +831,196 @@ input[type="file"] {
 }
 
 /*About Me Page*/
-
-/*Intro Section*/
-.intro-section{
-
+/* Fullscreen section */
+/* Override for light version of navbar */
+.light-navbar a {
+    color: black;
 }
-.intro-card{
-    
+
+.light-navbar .nav-toggle {
+    color: black;
+}
+
+.light-navbar #cv-button {
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+}
+
+.light-navbar #cv-button:hover {
+    background-color: transparent;
+    color: black;
+}
+
+.intro-section {
+  width: 100vw;
+  height: 120vh; /* enough to hold all 3 overlapping cards */
+  position: relative;
+}
+
+/* Card wrapper for each intro card */
+.intro-card-wrapper {
+  display: flex;
+  justify-content: center;     /* Optional: horizontal center */
+  align-items: center;         /* ✅ Vertically center */
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: visible;
+}
+
+/* Stack cards with slight upward overlap */
+.intro-card-wrapper:nth-child(2),
+.intro-card-wrapper:nth-child(3) {
+  margin-top: -80vh; /* slight overlap */
+}
+/* Z-index stacking */
+.intro-card-wrapper:nth-child(1) { z-index: 1; }
+.intro-card-wrapper:nth-child(2) { z-index: 2; }
+.intro-card-wrapper:nth-child(3) { z-index: 3; }
+
+/* Container to hold rotated background */
+.card-bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* The actual angled background image */
+.card-bg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* vertical center the rotated background */
+  width: 120vw;
+  height: 120vh;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Card 1 and 3 background to left */
+.intro-card-wrapper:nth-child(1) .card-bg,
+.intro-card-wrapper:nth-child(3) .card-bg {
+  left: -10vw;
+}
+
+/* Card 2 background to right */
+.intro-card-wrapper:nth-child(2) .card-bg {
+  right: -10vw;
+  left: auto;
+}
+
+/* Rotations + background image */
+.intro-card-wrapper:nth-child(1) .card-bg {
+  background-image: url('../assets/intro-card-1.png');
+  transform: rotate(30deg);
+}
+
+.intro-card-wrapper:nth-child(2) .card-bg {
+  background-image: url('../assets/intro-card-2.png');
+  transform: rotate(-15deg);
+}
+
+.intro-card-wrapper:nth-child(3) .card-bg {
+  background-image: url('../assets/intro-card-3.png');
+  transform: rotate(20deg);
+}
+
+/* Content card style */
+.intro-card {
+  z-index: 1;
+  width: 35%;
+  color: white;
+  padding: 2rem 1rem;
+}
+.intro-card-wrapper:nth-child(1) .intro-card {
+  margin-top: -15vh; /* move up by 5% of viewport height */
+}
+
+.intro-card-wrapper:nth-child(2) .intro-card,
+.intro-card-wrapper:nth-child(3) .intro-card {
+  margin-top: 15vh;
+}
+
+
+/* Left-aligned card text */
+.intro-card-wrapper:nth-child(1) .intro-card,
+.intro-card-wrapper:nth-child(3) .intro-card {
+  margin-left: 10%;
+  margin-right: auto;
+  text-align: left;
+}
+.intro-card-wrapper:nth-child(3) .intro-card {
+    color:black;
+    padding-top: 4rem;
+}
+
+/* Right-aligned card text */
+.intro-card-wrapper:nth-child(2) .intro-card {
+  margin-left: auto;
+  margin-right: 10%;
+  text-align: right;
 }
 .hidden-content{
     display:none;
 }
 
+.get-in-touch {
+    position: relative;
+    z-index: 5;
+    margin-top: -35vh;                    /* overlap previous section */
+    width: 100vw;
+    height: 85vh;                         /* custom height instead of padding */
+    background-image: url('../assets/touch-wave.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    display: flex;
+    padding-left:10%;
+    padding-top:8%;
+    align-items: center;                 /* ✅ vertical center */
+}
+#touch-button {
+    background-color: black;
+    border-radius: 10px;
+    border: 2px solid black;
+    color: white;
+    padding: 0.75em 2em;
+    font-weight: bold;
+    font-size: medium;
+    cursor: pointer;
+}
 
+.build-teams-2 {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin-top: -20%; /* ⬅️ Adjust this value as needed */
+    z-index: 1;
+    margin-bottom:20%;
+}
+
+.build-teams-2 video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.build-teams-2 h5{
+    font-weight:bold;
+    color:white;
+    position:absolute;
+    top:50%;
+    left:30%;
+}
+.build-teams-2 img{
+    z-index:5;
+    position:absolute;
+    bottom:-13%;
+    width:100vw;
+}
 /*phone styles*/
 .sidebar{
     background-color: white;
@@ -859,4 +1038,6 @@ input[type="file"] {
 .sidebar .nav-links a{
     color:black;
 }
+
+
 

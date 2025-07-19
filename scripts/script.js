@@ -178,11 +178,16 @@ formSections.forEach(section => {
     }
   });
 });
-document.querySelectorAll('input[type="file"]').forEach(fileInput => {
-  fileInput.addEventListener('change', function () {
-    const sectionId = this.closest('.form-section').id;
-    const fileNameSpan = document.querySelector(`#${sectionId} #file-name`);
-    const fileNames = Array.from(this.files).map(file => file.name).join('<br/>');
-    fileNameSpan.innerHTML = fileNames || 'No file chosen';
+const sections = document.querySelectorAll('.triangle-section');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
   });
+}, {
+  threshold: 0.6
 });
+
+sections.forEach(section => observer.observe(section));
