@@ -220,14 +220,13 @@ footer img{
 }
 
 
-
-
 /*page-specific stuff*/
 .top-section{
     margin:0;
     padding:0;
     height:100vh;
     position:relative;
+    background-color: black;
 }
 .top-section video{
     position: absolute;
@@ -1028,6 +1027,26 @@ input[type="file"] {
     position:absolute;
     bottom:-13%;
     width:100vw;
+}
+.hero-section.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.hero-section.center h1, .hero-section.center h5{
+    width:80%;
+    text-align:center;
+}
+.industry-expertise{
+    width:100vw;
+    height:100vh;
+    margin-top:7%;
+    display:flex;
+}
+.industry-expertise .section-content{
+    width:80%;
+    float:right;
 }
 /*phone styles*/
 .sidebar{
