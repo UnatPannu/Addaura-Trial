@@ -621,7 +621,13 @@ footer img{
     width:100vw;
 }
 .get-in-touch h1{
-    margin:10%;
+    margin-top:10%;
+    margin-bottom:3%;
+    margin-left:10%;
+}
+.get-in-touch .subheading h5{
+    margin-left:10%;
+    font-weight:700;
 }
 .forms-container{
     display:flex;
@@ -1008,6 +1014,7 @@ input[type="file"] {
     margin-top: -20%; /* ⬅️ Adjust this value as needed */
     z-index: 1;
     margin-bottom:20%;
+    background-color:black;
 }
 
 .build-teams-2 video {
@@ -1048,6 +1055,8 @@ input[type="file"] {
     width:80%;
     float:right;
 }
+
+
 /*phone styles*/
 .sidebar{
     background-color: white;
