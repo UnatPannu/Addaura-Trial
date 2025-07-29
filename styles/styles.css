@@ -14,6 +14,7 @@ body{
     min-height:100vh;
     width:100vw;
     font-family:Avenir, Monsterrat, 'Tahoma';
+    overflow-x:hidden;
 }
 video {
   display: block;
@@ -22,18 +23,18 @@ video {
 }
 @font-face{
     font-family:Avenir;
-    src:url("avenir-font/AvenirLTStd-Light.otf");
+    src:url("../avenir-font/AvenirLTStd-Light.otf");
     font-weight:var(--light-weight);
 
 }
 @font-face{
     font-family:Avenir;
-    src:url("avenir-font/AvenirLTStd-Heavy.otf") format("opentype");
+    src:url("../avenir-font/AvenirLTStd-Heavy.otf") format("opentype");
     font-weight:500;
 }
 @font-face{
     font-family:Avenir;
-    src:url("avenir-font/AvenirLTStd-Black.otf") format("opentype");
+    src:url("../avenir-font/AvenirLTStd-Black.otf") format("opentype");
     font-weight:700;
 }
 
@@ -218,7 +219,9 @@ footer img{
     0%, 100% { transform: translate(0, 0); opacity: 0.6; }
     50% { transform: translate(-5px, 3px); opacity: 0.4; }
 }
-
+.bold-text{
+    font-weight:bold;
+}
 
 /*page-specific stuff*/
 .top-section{
@@ -841,53 +844,77 @@ input[type="file"] {
 /*About Me Page*/
 /* Fullscreen section */
 /* Override for light version of navbar */
-.light-navbar a {
-    color: black;
+/* Light default navbar styles */
+.light-navbar {
+  background-color: white;
+  color: black;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.light-navbar a,
 .light-navbar .nav-toggle {
-    color: black;
+  color: black;
 }
 
 .light-navbar #cv-button {
-    background-color: black;
-    color: white;
-    border: 2px solid black;
+  background-color: black;
+  color: white;
+  border: 2px solid black;
 }
 
 .light-navbar #cv-button:hover {
-    background-color: transparent;
-    color: black;
+  background-color: transparent;
+  color: black;
+}
+
+.light-navbar.hovered-intro {
+  background-color: black;
+  color: white;
+}
+
+.light-navbar.hovered-intro a,
+.light-navbar.hovered-intro .nav-toggle {
+  color: white;
+}
+
+.light-navbar.hovered-intro #cv-button {
+  background-color: white;
+  color: black;
+  border: 2px solid white;
+}
+
+.light-navbar.hovered-intro #cv-button:hover {
+  background-color: transparent;
+  color: white;
 }
 
 .intro-section {
   width: 100vw;
-  height: 120vh; /* enough to hold all 3 overlapping cards */
+  height: 120vh;
   position: relative;
+  overflow: visible;
 }
 
-/* Card wrapper for each intro card */
 .intro-card-wrapper {
   display: flex;
-  justify-content: center;     /* Optional: horizontal center */
-  align-items: center;         /* ✅ Vertically center */
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   width: 100vw;
   position: relative;
   overflow: visible;
 }
 
-/* Stack cards with slight upward overlap */
 .intro-card-wrapper:nth-child(2),
 .intro-card-wrapper:nth-child(3) {
-  margin-top: -80vh; /* slight overlap */
+  margin-top: -80vh;
 }
+
 /* Z-index stacking */
 .intro-card-wrapper:nth-child(1) { z-index: 1; }
 .intro-card-wrapper:nth-child(2) { z-index: 2; }
 .intro-card-wrapper:nth-child(3) { z-index: 3; }
 
-/* Container to hold rotated background */
 .card-bg-container {
   position: absolute;
   top: 0;
@@ -898,84 +925,168 @@ input[type="file"] {
   z-index: 0;
 }
 
-/* The actual angled background image */
 .card-bg {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%); /* vertical center the rotated background */
+  transform: translateY(-50%);
   width: 120vw;
   height: 120vh;
   background-size: cover;
   background-position: center;
+  transition: opacity 0.5s ease;
 }
 
-/* Card 1 and 3 background to left */
+/* Background positioning */
 .intro-card-wrapper:nth-child(1) .card-bg,
 .intro-card-wrapper:nth-child(3) .card-bg {
   left: -10vw;
 }
-
-/* Card 2 background to right */
 .intro-card-wrapper:nth-child(2) .card-bg {
   right: -10vw;
   left: auto;
 }
 
-/* Rotations + background image */
+/* Background images and rotation */
 .intro-card-wrapper:nth-child(1) .card-bg {
   background-image: url('../assets/intro-card-1.png');
   transform: rotate(30deg);
 }
-
 .intro-card-wrapper:nth-child(2) .card-bg {
   background-image: url('../assets/intro-card-2.png');
   transform: rotate(-15deg);
 }
-
 .intro-card-wrapper:nth-child(3) .card-bg {
   background-image: url('../assets/intro-card-3.png');
   transform: rotate(20deg);
 }
 
-/* Content card style */
+/* Card content */
 .intro-card {
   z-index: 1;
-  width: 35%;
-  color: white;
+  width: 30%;
   padding: 2rem 1rem;
+  color: white;
+  transition: transform 0.4s ease;
 }
+
 .intro-card-wrapper:nth-child(1) .intro-card {
-  margin-top: -15vh; /* move up by 5% of viewport height */
-}
-
-.intro-card-wrapper:nth-child(2) .intro-card,
-.intro-card-wrapper:nth-child(3) .intro-card {
-  margin-top: 15vh;
-}
-
-
-/* Left-aligned card text */
-.intro-card-wrapper:nth-child(1) .intro-card,
-.intro-card-wrapper:nth-child(3) .intro-card {
+  margin-top: -15vh;
   margin-left: 10%;
   margin-right: auto;
   text-align: left;
 }
-.intro-card-wrapper:nth-child(3) .intro-card {
-    color:black;
-    padding-top: 4rem;
-}
 
-/* Right-aligned card text */
 .intro-card-wrapper:nth-child(2) .intro-card {
+  margin-top: 15vh;
   margin-left: auto;
   margin-right: 10%;
   text-align: right;
 }
-.hidden-content{
-    display:none;
+
+.intro-card-wrapper:nth-child(3) .intro-card {
+  margin-top: 15vh;
+  margin-left: 10%;
+  margin-right: auto;
+  text-align: left;
+  color: black;
+  padding-top: 4rem;
 }
 
+/* Hover alignment switch */
+.intro-card-wrapper:nth-child(2):hover .intro-card {
+  text-align: left;
+}
+
+/* Background overlays */
+.card-solid-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.intro-card-wrapper:nth-child(1) .card-solid-bg { background-color: black; }
+.intro-card-wrapper:nth-child(2) .card-solid-bg { background-color: #1c4e80; }
+.intro-card-wrapper:nth-child(3) .card-solid-bg { background-color: #a6dcef; }
+
+.intro-card-wrapper:hover .card-bg {
+  opacity: 0;
+}
+
+.intro-card-wrapper:hover .card-solid-bg {
+  opacity: 1;
+}
+
+/* Hidden content */
+.intro-card .hidden-content {
+  display: none;
+}
+
+.intro-card-wrapper:hover .intro-card .hidden-content {
+  display: block;
+  opacity: 1;
+}
+
+/* Headings and lists */
+.intro-card h3 {
+  transition: color 0.5s ease;
+  width: 100%;
+  margin-bottom: 3%;
+}
+
+.intro-card li {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+}
+
+/* Hover expansion widths */
+.intro-card-wrapper:nth-child(1):hover .intro-card { width: 35%; }
+.intro-card-wrapper:nth-child(2):hover .intro-card { width: 53%; }
+.intro-card-wrapper:nth-child(3):hover .intro-card { width: 100%; }
+
+.card-columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 90%;
+  align-items: flex-start;
+}
+
+.card-section {
+  flex: 1;
+  padding: 1rem;
+}
+
+/* Allow vertical growth for content only */
+.intro-card-wrapper:hover .intro-card {
+  max-height: 200vh;
+  padding-bottom: 10rem;
+}
+
+/* NEW: Only move 2nd card's text upward on hover */
+.intro-card-wrapper:nth-child(2),.intro-card-wrapper:nth-child(3)  {
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s ease;
+  height: 100vh;
+  overflow: visible;
+}
+.intro-card-wrapper:nth-child(2):hover .intro-card{
+    transform: translateY(-20vh);
+    margin-top:15%;
+}
+.intro-card-wrapper:nth-child(3):hover .intro-card{
+    transform: translateY(-10vh);
+    margin-top:15%;
+}
+.intro-card-wrapper:nth-child(2):hover{
+  height: 130vh; /* Slight height increase */
+}
 .get-in-touch-2 {
     position: relative;
     z-index: 5;
