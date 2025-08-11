@@ -13,17 +13,25 @@
         <div class="top-section">
         <video src="https://9hjfelgvooypdewc.public.blob.vercel-storage.com/assets/services-header.mp4" autoplay muted loop></video>
         <header>
+        <a href="index.html" class="mobile-logo">
+            <img src="assets/logo.svg" alt="Addaura Logo" />
+        </a>
         <nav class="navbar" role="navigation" aria-label="Main navigation">
-            <ul class="nav-links">
-                <li><a href="index.html"><img src="assets/logo.svg" alt="Addaura Logo" /></a></li>
-                <li><a href="about-me.html">About Me</a></li>
-                <li id="active"><a href="services.html">Services</a></li>
-                <li><a href="#">Clients</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#" id="cv-button">Send CV</a></li>
-            </ul>
-            <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+                <button class="nav-toggle" aria-label="Toggle menu">
+                    <span class="menu-icon">☰</span>
+                    <span class="close-icon">✕</span>
+                </button>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html"><img src="assets/logo.svg" alt="Addaura Logo" id="nav-logo"/></a></li>
+                    <li><a href="about-me.html">About Me</a></li>
+                    <li id="active"><a href="services.html">Services</a></li>
+                    <li><a href="#">Clients</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#" id="cv-button">Send CV</a></li>
+                </ul>
+            </div>
         </nav>
         </header>
         <div class="hero-wrapper">
@@ -56,3 +64,4 @@
                 <p>From applied machine learning to AI-driven SaaS, we understand the nuance <br/> and urgency in hiring for cutting-edge teams.</p>
             </div>
         </div>
+        <script src="scripts/script.js"></script>

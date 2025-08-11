@@ -13,17 +13,25 @@
         <div class="top-section">
         <video src="https://9hjfelgvooypdewc.public.blob.vercel-storage.com/assets/intro-home-uOGviVgxdhzAgRf0gLce1ayapuXZdu.mp4" autoplay muted loop></video>
         <header>
+        <a href="index.html" class="mobile-logo">
+            <img src="assets/logo.svg" alt="Addaura Logo" />
+        </a>
         <nav class="navbar" role="navigation" aria-label="Main navigation">
-            <ul class="nav-links">
-                <li><a href="#"><img src="assets/logo.svg" alt="Addaura Logo" /></a></li>
-                <li><a href="about-me.html">About Me</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="#">Clients</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#" id="cv-button">Send CV</a></li>
-            </ul>
-            <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+                <button class="nav-toggle" aria-label="Toggle menu">
+                    <span class="menu-icon">☰</span>
+                    <span class="close-icon">✕</span>
+                </button>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#"><img src="assets/logo.svg" alt="Addaura Logo" id="nav-logo"/></a></li>
+                    <li><a href="about-me.html">About Me</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="#">Clients</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#" id="cv-button">Send CV</a></li>
+                </ul>
+            </div>
         </nav>
         </header>
         <div class="hero-wrapper">
@@ -66,7 +74,7 @@
                 <h5>No middle layers. No handoffs.</h5>
                 <p>Just one expert, embedded in your process — from first brief to signed offer and beyond.</p>
                 <ul>
-                    You get:
+                    <p>You get:</p>
                         <li>Direct accountability</li>
                         <li>Tailored communication</li>
                         <li>Fewer CVs, better matches</li>
@@ -75,7 +83,6 @@
                 </p>
             </div>
         </div>
-
         <div class="teams-talent">
             <div class="heading">
                 <h3>For Teams and Talent</h3>
@@ -176,7 +183,7 @@
                 <div class="form-section" id="talent-section">
                     <h5>Looking for the right tech role for you?</h5>
                     <hr/>
-                    <form id="hiring">
+                    <form id="talent">
                         <label for="name1">Name</label>
                         <input type="text" placeholder="Enter Name" id="name1"/>
                         <label for="email1">Email</label>

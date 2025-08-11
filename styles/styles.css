@@ -13,7 +13,7 @@ html {
 body{
     min-height:100vh;
     width:100vw;
-    font-family:Avenir, Monsterrat, 'Tahoma';
+    font-family:Avenir, Montsterrat, 'Tahoma';
     overflow-x:hidden;
 }
 video {
@@ -58,7 +58,7 @@ h4 {
 h5{
     font-weight:300;
 }
-h5, p {
+h5, p, ul{
     font-size: clamp(0.875rem, 1.5vw, 1rem); /* ≈ 15px */
       
 }
@@ -74,13 +74,19 @@ p{
 button{
     font-family:'Avenir';
 }
+.mobile-logo{
+  display: none;
+}
 .navbar {
-    font-size: clamp(0.875rem, 1vw, 1rem); 
+    font-size: clamp(0.75rem, 0.85vw, 0.875rem);
     font-weight:var(--light-weight);
     padding-top:5%;
     padding-inline: var(--section-padding);
     z-index:10;
     position: relative;
+}
+.navbar li{
+    font-size: clamp(0.75rem, 0.85vw, 0.875rem);
 }
 .nav-links {
     width: 100%;
@@ -128,13 +134,27 @@ button{
     padding-top:6px;
     color: black;
 }
-.navbar #cv-button:hover{
+.navbar #cv-button:hover, .light-navbar #cv-button:hover{
     background-color: transparent;
     color:white;
 }
 .navbar #active{
     font-weight:bold;
 }
+/* Hide close icon by default */
+.nav-toggle .close-icon {
+  display: none;
+}
+
+/* Show close icon and hide menu icon when nav is open */
+body.nav-open .nav-toggle .menu-icon {
+  display: none;
+}
+
+body.nav-open .nav-toggle .close-icon {
+  display: inline;
+}
+
 footer {
   display: flex;
   justify-content: space-between; /* or center, flex-start */
@@ -257,13 +277,12 @@ footer img{
 .hero-section h5{
     margin-top:2%;
 }
-.marquee-section{
-    padding-block:0.5%;
-    background-color: white;
-    width:100vw;
-    font-size: clamp(0.875rem, 1vw, 1rem); 
-    font-weight:700;
-    overflow: hidden;
+.marquee-section {
+  padding-block: 0.25rem; /* Less padding vertically */
+  background-color: white;
+  width: 100vw;/* Smaller font size */
+  font-weight: 500; /* Optional: slightly lighter than 700 */
+  overflow: hidden;
   white-space: nowrap;
 }
 .marquee {
@@ -277,9 +296,10 @@ footer img{
   padding: 0;
 }
 .marquee-content li {
-  padding: 0 2rem;
-  flex-shrink: 0;
-  white-space: nowrap; /* Prevent line breaking in individual items */
+    padding: 0 1rem;
+    flex-shrink: 0;
+    white-space: nowrap; /* Prevent line breaking in individual items */
+    font-size: clamp(0.625rem, 0.9vw, 0.675rem);
 }
 /*Hiring Section*/
 .hiring-wrapper{
@@ -417,7 +437,7 @@ footer img{
     font-weight:var(--light-weight);
     line-height:1.6;
 }
-.building-teams .section-content li{
+.building-teams .section-content li{  
     margin-left:5%;
 }
 /*For Teams and Talent*/
@@ -701,7 +721,7 @@ footer img{
 #hiring-section{
     position:relative;
 }
-#hiring{
+#hiring,#talent{
     opacity:0;
     max-height:0px;
     width:100%;
@@ -728,7 +748,7 @@ footer img{
 .form-section.active{
     transform: scale(1.25);
 }
-.form-section.active #hiring{
+.form-section.active #hiring, .form-section.active #talent{
     max-height: 1000px;
     margin-top: 20px;
     opacity:1;
@@ -1038,7 +1058,7 @@ input[type="file"] {
   margin-bottom: 3%;
 }
 
-.intro-card li {
+.intro-card li{
   font-size: clamp(0.875rem, 1.5vw, 1rem);
 }
 
@@ -1061,13 +1081,11 @@ input[type="file"] {
   flex: 1;
   padding: 1rem;
 }
-
 /* Allow vertical growth for content only */
 .intro-card-wrapper:hover .intro-card {
   max-height: 200vh;
   padding-bottom: 10rem;
 }
-
 /* NEW: Only move 2nd card's text upward on hover */
 .intro-card-wrapper:nth-child(2),.intro-card-wrapper:nth-child(3)  {
   position: relative;
@@ -1100,16 +1118,17 @@ input[type="file"] {
     display: flex;
     padding-left:10%;
     padding-top:8%;
-    align-items: center;                 /* ✅ vertical center */
+    align-items: center;              
 }
 #touch-button {
+    margin-top:45%;
     background-color: black;
     border-radius: 10px;
     border: 3px solid black;
     color: white;
-    padding: 0.75em 2em;
+    padding: 0.25em 0.5em;
     font-weight: bold;
-    font-size: medium;
+    font-size: clamp(1rem, 2vw, 1.375rem);
     cursor: pointer;
     transition:smooth;
     transition-duration:1s;
@@ -1122,23 +1141,23 @@ input[type="file"] {
     position: relative;
     width: 100vw;
     height: 100vh;
-    margin-top: -20%; /* ⬅️ Adjust this value as needed */
+    margin-top: -5%; /* ⬅️ Adjust this value as needed */
     z-index: 1;
     margin-bottom:20%;
     background-color:black;
 }
-
 .build-teams-2 video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.build-teams-2 h5{
+.build-teams-2 h4{
     font-weight:bold;
     color:white;
     position:absolute;
     top:50%;
-    left:30%;
+    left:50%;
+    transform: translate(-50%, -50%);
 }
 .build-teams-2 img{
     z-index:5;
@@ -1166,25 +1185,297 @@ input[type="file"] {
     width:80%;
     float:right;
 }
-
-
-/*phone styles*/
-.sidebar{
-    background-color: white;
-    position:fixed;
-    top:0;
-    right:0;
-    height:100vh;
-    width:250px;
-    z-index:999;
-    display:none;
+@media (max-width: 768px) {
+    html,body{
+        overflow-x:hidden;
+    }
+    * {
+  box-sizing: border-box;
 }
-.sidebar .nav-links{
+.top-section video{
+  object-position: 76% center
+}
+.hero-section{
+  margin-left:5%;
+}
+  .mobile-logo {
+    display: block;
+    position: absolute;
+    top: 2rem;
+    left: 1.5rem;
+    z-index: 12;
+    width: 30%; /* Adjust as needed */
+  }
+
+  .mobile-logo img {
+    width: 100%;
+    height: auto;
+  }
+  .navbar {
+    width: 100vw;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 1rem;
+    background-color: transparent; /* Make navbar transparent */
+    position: relative;
+    z-index: 10;
+  }
+
+  .nav-menu {
+  position: absolute;
+  top: 0; /* Just below navbar */
+  right: 0;
+  left: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  padding: 0;
+  background-color: transparent;
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  z-index: 9; /* Ensure it's below toggle icon but above page content */
+}
+
+body.nav-open .nav-menu {
+  max-height: 100vh;
+  opacity: 1;
+  visibility: visible;
+  padding: 1rem 0;
+  max-width: 100vw;
+}
+
+/* Default nav menu background: black */
+body.nav-open .navbar:not(.light-navbar) .nav-menu {
+  background-color: black;
+}
+
+/* Light navbar version: white background */
+body.nav-open .navbar.light-navbar .nav-menu {
+  background-color: white;
+}
+/* Inside light navbar, make text black */
+body.nav-open .navbar.light-navbar .nav-links a,
+body.nav-open .navbar.light-navbar #cv-button {
+  color: black;
+}
+
+body.nav-open .navbar.light-navbar .nav-toggle {
+  color: black;
+}
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
     list-style: none;
-}
-.sidebar .nav-links a{
-    color:black;
-}
+  }
 
+  /* Toggle icon visibility */
+  .nav-toggle .menu-icon {
+    display: inline;
+  }
 
+  .nav-toggle .close-icon {
+    display: none;
+  }
+
+  body.nav-open .nav-toggle .menu-icon {
+    display: none;
+  }
+
+  body.nav-open .nav-toggle .close-icon {
+    display: inline;
+  }
+
+  /* Toggle button */
+  .nav-toggle{
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    position: absolute;
+    right: var(--section-padding, 1rem);
+    top: 1.5rem;
+    z-index: 11;
+    cursor: pointer;
+  }
+    .light-navbar .nav-toggle {
+    color: black;
+    }
+  #nav-logo {
+    display:none;
+  }
+
+  .navbar #cv-button {
+    all: unset;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  .hiring-wrapper{
+    max-height:fit-content;
+    margin:10% auto;
+  }
+  .glitch-container{
+    display:none;
+  }
+  .hiring-section{
+    width:80%;
+  }
+  .hiring-section p{
+    width:100%;
+  }
+  .building-teams{
+    width:100%;
+    margin-bottom:10%;
+  }
+  .building-teams video{
+    max-width:80%;
+  }
+  .building-teams .section-content{
+    width:80%;
+    margin-left:auto;
+  }
+  .teams-talent .heading {
+    position: static;
+    transform: none;
+    width: 80%;
+    height: auto;
+    padding: 2rem 1rem;
+    margin-left:auto;
+  }
+  .teams-talent .heading h3{
+    margin-bottom:5%;
+  }
+  .teams-talent .heading.spot-hiring {
+    padding: 2rem 1rem;
+    align-items: flex-start;
+  }
+
+  .teams-talent .sections-container {
+    flex-direction: column;
+    gap: 2rem;
+    position: static;
+    padding: 1rem;
+  }
+
+  .teams-talent .section {
+    position: static;
+    opacity: 1;
+    width: 90%;
+    padding:8%;
+    height: auto;
+    pointer-events: auto;
+    user-select: auto;
+  }
+
+  .section h4,
+  .section p {
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .section ul {
+    padding-left: 1.5rem;
+  }
+  .testimonials .logo-container {
+    gap: 10%; /* slightly bigger gap */
+    padding: 5%;
+    margin-left:5%;
+  }
+  .testimonials .logo-container img{
+    width:90%;
+  }
+  .testimonial-logo {
+    flex: 0 0 calc(100% / 2 - 10%); /* 2 logos max */
+  }
+
+  .testimonials-container {
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 0;
+    gap: 2rem;
+  }
+
+  .testimonial {
+    width: 90%;
+  }
+
+  .testimonial img {
+    width: 15%;
+  }
+  .forms-container {
+    flex-direction: column;
+    gap: 6rem;
+    width: 90%;
+  }
+  .get-in-touch h1{
+    padding-block:10%;
+  }
+  .form-section {
+    width: 80%;
+    margin-inline:auto;
+  }
+
+  .form-section input,
+  .form-section textarea {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .form-section label {
+    width: auto;
+    padding-left: 0;
+    margin-left: 5%;
+  }
+  .form-section.active{
+    transform: scale(1);
+    transform-origin: top center;
+    }
+    .form-section:hover{
+    transform: scale(1);
+    }
+    .form-section:hover hr{
+    width:100%;
+    }
+    .wave-button:hover{
+      animation:none
+    }
+    footer .contact-info{
+        transform:scale(0.75);
+        margin-left:0%;
+    }
+    footer{
+      margin-top:15%;
+    }
+  .custom-file-upload {
+    text-align:center;
+    width:90%;
+  }
+  .build-teams-2 h5{
+    margin-left:auto;
+  }
+  .intro-card-wrapper{
+    width:40%;
+  }
+  .intro-section {
+    height: auto; /* allow content to grow */
+  }
+  .get-in-touch .subheading{
+    padding-bottom:8%;
+  }
+}
 

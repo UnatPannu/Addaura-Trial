@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("DOMContentLoaded fired");
+  // ✅ Menu toggle logic
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.querySelector('.nav-menu');
 
-  // Navbar toggle
-  const toggle = document.querySelector('.nav-toggle');
-  const links = document.querySelector('.nav-links');
-  toggle?.addEventListener('click', () => {
-    links.classList.toggle('active');
+  navToggle.addEventListener('click', () => {
+    document.body.classList.toggle('nav-open');
   });
+
 
   // Marquee duplication
   const marquees = document.querySelectorAll(".marquee");
@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Teams And Talent Scroll Animation
+  if (window.innerWidth > 768) {
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       if (!window.gsap || !window.ScrollTrigger) return;
@@ -148,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ScrollTrigger.refresh();
     });
   });
-
+}
   // Form sections click logic
   const formSections = document.querySelectorAll('.form-section');
   formSections.forEach(section => {
