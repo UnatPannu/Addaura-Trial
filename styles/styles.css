@@ -154,7 +154,47 @@ body.nav-open .nav-toggle .menu-icon {
 body.nav-open .nav-toggle .close-icon {
   display: inline;
 }
-
+.team-section{
+  width:100vw;
+  height:50vh;
+  position:relative;
+  margin-top:10%;
+  margin-bottom:8%;
+}
+.team-section h4,.team-section p{
+  width:40%;
+  margin-inline:auto;
+  margin-bottom:2%;
+}
+.team-section .bottom-text{
+  color:black;
+  position:absolute;
+  bottom:30px;
+}
+.cv-container{
+  display:flex;
+  width:80%;
+  margin-inline:auto;
+  justify-content:space-between;
+  margin-top:10%;
+  margin-bottom:10%;
+}
+#cv-form{
+  font-weight:100;
+}
+#cv-form label{
+  font-size: clamp(0.75rem, 0.75vw, 1rem);
+}
+#cv-form input, #cv-form textarea{
+  width:100%;
+  height:30px;
+  margin-bottom:10px;
+  padding:3%;
+  border:1px solid black;
+  background-color:black;
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  margin-bottom:7%;
+}
 footer {
   display: flex;
   justify-content: space-between; /* or center, flex-start */
@@ -559,6 +599,7 @@ footer img{
     width:100vw;
     background-color: black;
     position:relative;
+    height:89vh;
 }
 .testimonials video{
     width:100%;
@@ -577,7 +618,6 @@ footer img{
     scrollbar-width: none;
     overflow-x: auto;
     scroll-behavior: auto;
-    
 }
 .testimonials .logo-container::-webkit-scrollbar {
     display: none;               /* Hide scrollbar in Chrome/Safari */
@@ -955,7 +995,11 @@ input[type="file"] {
   background-position: center;
   transition: opacity 0.5s ease;
 }
-
+.hero-section h1{
+  width:90%;
+  padding-bottom:5%;
+  line-height:100%;
+}
 /* Background positioning */
 .intro-card-wrapper:nth-child(1) .card-bg,
 .intro-card-wrapper:nth-child(3) .card-bg {
@@ -1185,28 +1229,210 @@ input[type="file"] {
     width:80%;
     float:right;
 }
-@media (max-width: 768px) {
-    html,body{
-        overflow-x:hidden;
-    }
-    * {
+.industry-expertise .images-section {
+    display: flex;
+    width:25%;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+}
+.industry-expertise img{
+    border-radius:15px;
+    height:100%;
+}
+/* Remove top touching corners */
+.industry-expertise .images-section img:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.industry-expertise .images-section img:nth-child(2) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+/* Remove bottom touching corners */
+.industry-expertise .images-section img:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.industry-expertise .section-content{
+    width:80%;
+    margin-top:10%;
+    margin-left:10%;
+}
+.industry-expertise .section-content h3{
+  margin-bottom:1.75rem;
+}
+.industry-expertise .section-content h4{
+  margin-bottom:0.5rem;
+}
+.industry-expertise .section-content p{
+  margin-bottom:1.5rem;
+  font-weight:300;
+}
+.roles-covered{
+  height:80vh;
+  width:100vw;
+}
+.roles-covered h3{
+  margin: 10% 15%;
+  margin-bottom:3%;
+}
+.roles-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+  grid-auto-rows: auto;   /* 3 rows that size to content */
+  gap: 20px;
+  width:80%;
+  margin-left:15%;
+}
+.role{
+  margin-bottom:5%;
+  width:65%;
+  height:auto;
+  justify-content: center;
+}
+.role h6{
+  font-weight:100;
+  margin-top:2%;
+  font-size: clamp(0.80rem, 0.85vw, 0.9rem); 
+}
+.role-heading {
+  display: flex;
+  flex-direction:row;
+}
+.role-heading img{
+  width:7%;
+  margin-right:2%;
+  margin-bottom:1%;
+}
+.for-teams-and-talent{
+  height:100vh;
+  width:100vw;
+}
+.clients .top-section{
+  background-color: #111827;;
+}
+.testimonials-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* full height */
+  position: relative;
+  padding: 20px;
   box-sizing: border-box;
 }
-.top-section video{
-  object-position: 76% center
+.testimonials-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom:10%;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
 }
-.hero-section{
-  margin-left:5%;
+.testimonial-2 {
+  max-width: 85%;
+  text-align: left;
+  color:white;
+  padding-bottom:5%;
 }
+.testimonial-2 p {
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 5%;
+}
+.testimonial-2 span {
+  font-size: 1rem;
+  color: #cbd5e1;
+}
+.arrow {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.arrow img {
+  width: 18px;    /* adjust thinness */
+  height: auto;
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+.arrow:hover img {
+  opacity: 0.6;
+}
+.arrow.left {
+  position: absolute;
+  left: -50px; /* adjust for layout */
+  top: 50%;
+  transform: translateY(-50%);
+}
+.arrow.right {
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.fade {
+  animation: fadeEffect 0.6s;
+}
+.logo-container.dark {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.logo-container.dark::-webkit-scrollbar { 
+  display: none;
+}
+@keyframes fadeEffect {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.bottom-text {
+  position: absolute;
+  left: 5%;
+  bottom:25%;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  z-index:2;
+}
+.logo-container.dark {
+  background-color: white; 
+  gap: 4%;
+  padding: 2%;
+  margin-left: 3%;
+  margin-top:-5%;
+}
+.logo-container.dark .testimonial-logo {
+  background-color: black; /* switched */
+}
+/* Shared styles for both mobile and tablet */
+@media (max-width: 1024px) {
+  html, body {
+    overflow-x: hidden;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  .top-section video {
+    object-position: 76% center;
+  }
+  .hero-section {
+    margin-left: 5%;
+  }
   .mobile-logo {
     display: block;
     position: absolute;
     top: 2rem;
     left: 1.5rem;
     z-index: 12;
-    width: 30%; /* Adjust as needed */
+    width: 30%;
   }
-
   .mobile-logo img {
     width: 100%;
     height: auto;
@@ -1214,56 +1440,46 @@ input[type="file"] {
   .navbar {
     width: 100vw;
     max-width: 100%;
-    box-sizing: border-box;
     margin: 0;
     padding: 1rem;
-    background-color: transparent; /* Make navbar transparent */
+    background-color: transparent;
     position: relative;
     z-index: 10;
   }
-
   .nav-menu {
-  position: absolute;
-  top: 0; /* Just below navbar */
-  right: 0;
-  left: 0;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  padding: 0;
-  background-color: transparent;
-  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
-  z-index: 9; /* Ensure it's below toggle icon but above page content */
-}
-
-body.nav-open .nav-menu {
-  max-height: 100vh;
-  opacity: 1;
-  visibility: visible;
-  padding: 1rem 0;
-  max-width: 100vw;
-}
-
-/* Default nav menu background: black */
-body.nav-open .navbar:not(.light-navbar) .nav-menu {
-  background-color: black;
-}
-
-/* Light navbar version: white background */
-body.nav-open .navbar.light-navbar .nav-menu {
-  background-color: white;
-}
-/* Inside light navbar, make text black */
-body.nav-open .navbar.light-navbar .nav-links a,
-body.nav-open .navbar.light-navbar #cv-button {
-  color: black;
-}
-
-body.nav-open .navbar.light-navbar .nav-toggle {
-  color: black;
-}
-
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0;
+    background-color: transparent;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    z-index: 9;
+  }
+  body.nav-open .nav-menu {
+    max-height: 100vh;
+    opacity: 1;
+    visibility: visible;
+    padding: 1rem 0;
+    max-width: 100vw;
+  }
+  body.nav-open .navbar:not(.light-navbar) .nav-menu {
+    background-color: black;
+  }
+  body.nav-open .navbar.light-navbar .nav-menu {
+    background-color: white;
+  }
+  body.nav-open .navbar.light-navbar .nav-links a,
+  body.nav-open .navbar.light-navbar #cv-button {
+    color: black;
+  }
+  body.nav-open .navbar.light-navbar .nav-toggle {
+    color: black;
+  }
   .nav-links {
     flex-direction: column;
     align-items: center;
@@ -1274,26 +1490,19 @@ body.nav-open .navbar.light-navbar .nav-toggle {
     padding: 0;
     list-style: none;
   }
-
-  /* Toggle icon visibility */
   .nav-toggle .menu-icon {
     display: inline;
   }
-
   .nav-toggle .close-icon {
     display: none;
   }
-
   body.nav-open .nav-toggle .menu-icon {
     display: none;
   }
-
   body.nav-open .nav-toggle .close-icon {
     display: inline;
   }
-
-  /* Toggle button */
-  .nav-toggle{
+  .nav-toggle {
     display: block;
     background: none;
     border: none;
@@ -1305,48 +1514,53 @@ body.nav-open .navbar.light-navbar .nav-toggle {
     z-index: 11;
     cursor: pointer;
   }
-    .light-navbar .nav-toggle {
+  .light-navbar .nav-toggle {
     color: black;
-    }
-  #nav-logo {
-    display:none;
   }
-
+  #nav-logo {
+    display: none;
+  }
   .navbar #cv-button {
     all: unset;
     color: white;
     cursor: pointer;
     font-size: 1rem;
   }
-
   .nav-links a {
     color: white;
     text-decoration: none;
     font-size: 1rem;
   }
-  .hiring-wrapper{
-    max-height:fit-content;
-    margin:10% auto;
+  .testimonials{
+    height:auto;
   }
-  .glitch-container{
-    display:none;
+}
+
+/* Mobile only */
+@media (max-width: 768px) {
+  .hiring-wrapper {
+    max-height: fit-content;
+    margin: 10% auto;
   }
-  .hiring-section{
-    width:80%;
+  .glitch-container {
+    display: none;
   }
-  .hiring-section p{
-    width:100%;
+  .hiring-section {
+    width: 80%;
   }
-  .building-teams{
-    width:100%;
-    margin-bottom:10%;
+  .hiring-section p {
+    width: 100%;
   }
-  .building-teams video{
-    max-width:80%;
+  .building-teams {
+    width: 100%;
+    margin-bottom: 10%;
   }
-  .building-teams .section-content{
-    width:80%;
-    margin-left:auto;
+  .building-teams video {
+    max-width: 80%;
+  }
+  .building-teams .section-content {
+    width: 80%;
+    margin-left: auto;
   }
   .teams-talent .heading {
     position: static;
@@ -1354,54 +1568,49 @@ body.nav-open .navbar.light-navbar .nav-toggle {
     width: 80%;
     height: auto;
     padding: 2rem 1rem;
-    margin-left:auto;
+    margin-left: auto;
   }
-  .teams-talent .heading h3{
-    margin-bottom:5%;
+  .teams-talent .heading h3 {
+    margin-bottom: 5%;
   }
   .teams-talent .heading.spot-hiring {
     padding: 2rem 1rem;
     align-items: flex-start;
   }
-
   .teams-talent .sections-container {
     flex-direction: column;
     gap: 2rem;
     position: static;
     padding: 1rem;
   }
-
   .teams-talent .section {
     position: static;
     opacity: 1;
     width: 90%;
-    padding:8%;
+    padding: 8%;
     height: auto;
     pointer-events: auto;
     user-select: auto;
   }
-
   .section h4,
   .section p {
     margin-left: 0;
     margin-bottom: 0.5rem;
   }
-
   .section ul {
     padding-left: 1.5rem;
   }
   .testimonials .logo-container {
-    gap: 10%; /* slightly bigger gap */
+    gap: 10%;
     padding: 5%;
-    margin-left:5%;
+    margin-left: 5%;
   }
-  .testimonials .logo-container img{
-    width:90%;
+  .testimonials .logo-container img {
+    width: 90%;
   }
   .testimonial-logo {
-    flex: 0 0 calc(100% / 2 - 10%); /* 2 logos max */
+    flex: 0 0 calc(100% / 2 - 10%);
   }
-
   .testimonials-container {
     flex-direction: column;
     align-items: center;
@@ -1409,11 +1618,9 @@ body.nav-open .navbar.light-navbar .nav-toggle {
     top: 0;
     gap: 2rem;
   }
-
   .testimonial {
     width: 90%;
   }
-
   .testimonial img {
     width: 15%;
   }
@@ -1422,60 +1629,151 @@ body.nav-open .navbar.light-navbar .nav-toggle {
     gap: 6rem;
     width: 90%;
   }
-  .get-in-touch h1{
-    padding-block:10%;
+  .get-in-touch h1 {
+    padding-block: 10%;
   }
   .form-section {
     width: 80%;
-    margin-inline:auto;
+    margin-inline: auto;
   }
-
   .form-section input,
   .form-section textarea {
     width: 90%;
     margin-left: 5%;
   }
-
   .form-section label {
     width: auto;
     padding-left: 0;
     margin-left: 5%;
   }
-  .form-section.active{
+  .form-section.active,
+  .form-section:hover {
     transform: scale(1);
     transform-origin: top center;
-    }
-    .form-section:hover{
-    transform: scale(1);
-    }
-    .form-section:hover hr{
-    width:100%;
-    }
-    .wave-button:hover{
-      animation:none
-    }
-    footer .contact-info{
-        transform:scale(0.75);
-        margin-left:0%;
-    }
-    footer{
-      margin-top:15%;
-    }
+  }
+  .form-section:hover hr {
+    width: 100%;
+  }
+  .wave-button:hover {
+    animation: none;
+  }
+  footer .contact-info {
+    transform: scale(0.75);
+    margin-left: 0%;
+  }
+  footer {
+    margin-top: 15%;
+  }
   .custom-file-upload {
-    text-align:center;
-    width:90%;
+    text-align: center;
+    width: 90%;
   }
-  .build-teams-2 h5{
-    margin-left:auto;
+  .build-teams-2 h5 {
+    margin-left: auto;
   }
-  .intro-card-wrapper{
-    width:40%;
+  .intro-card-wrapper {
+    width: 40%;
   }
   .intro-section {
-    height: auto; /* allow content to grow */
+    height: auto;
   }
-  .get-in-touch .subheading{
-    padding-bottom:8%;
+  .get-in-touch .subheading {
+    padding-bottom: 8%;
   }
 }
 
+/* Tablet only */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mobile-logo{
+    width: 20%;
+  }
+  .teams-talent .section{
+    height: 450px;
+    width:30%;
+  }
+  .teams-talent .heading{
+    padding-block:4rem;
+    padding-inline:1rem;
+  }
+  .teams-talent .spot-hiring{
+    padding-block:1.5rem;
+  }
+  .testimonials .logo-container {
+    gap: 5%;
+    padding: 5%;
+    margin-left: 5%;
+  }
+  .testimonials .logo-container img {
+    width: 90%;
+  }
+  .testimonial-logo {
+    flex: 0 0 calc(100% / 2 - 10%);
+  }
+  .testimonials-container {
+    display:flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    gap: 2rem;
+    height:max-content;
+    top:20%;
+    left:0;
+    gap:5%;
+  }
+  .testimonials{
+    height:80vh;
+  }
+  .testimonials video{
+    object-fit: cover;
+    z-index:1;
+    opacity:0.6;
+  }
+  .testimonial-logo {
+    flex: 0 0 calc(100% / 4 - 2%); /* fewer per row */
+    height: 90px; /* smaller height */
+  }
+  .testimonial-logo img {
+    width: 50%; 
+  }
+.testimonial {
+    flex: 1 1 calc(33.333% - 2rem); 
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: white;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  .testimonials-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: stretch; 
+}
+.forms-container{
+    display:flex;
+    width:70%;
+    justify-content:space-between;
+    margin-inline:auto;
+    margin-top:10%;
+    gap:25%;
+}
+   .form-section.active #hiring,
+    .form-section.active #talent {
+        padding: 25px;
+        max-width: 850px; /* controls the black box itself */
+        margin: 0 auto;
+    }
+    .form-section.active form label,
+    .form-section.active form input,
+    .form-section.active form textarea {
+        width: 90%;
+        max-width: 550px; /* or however wide you want */
+    }
+        .form-section.active {
+        width: 50%;        /* wider percentage */
+        max-width: 500px;  /* bigger hard limit */
+    }
+  }
