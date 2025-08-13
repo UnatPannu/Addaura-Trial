@@ -173,11 +173,26 @@ body.nav-open .nav-toggle .close-icon {
 }
 .cv-container{
   display:flex;
-  width:80%;
+  width:75%;
   margin-inline:auto;
   justify-content:space-between;
   margin-top:10%;
   margin-bottom:10%;
+}
+.cv-container h6{
+  font-size: clamp(0.80rem, 0.85vw, 0.9rem); 
+  font-weight:500;
+  width:50%;
+}
+.cv-container .heading{
+  width:80%;
+}
+.cv-container .heading h1{
+  margin-left:0px;
+  padding-left:0px;
+}
+#cv-form textarea{
+  min-height:350px;
 }
 #cv-form{
   font-weight:100;
@@ -1276,7 +1291,7 @@ input[type="file"] {
   width:100vw;
 }
 .roles-covered h3{
-  margin: 10% 15%;
+  margin: 12% 15%;
   margin-bottom:3%;
 }
 .roles-container{
@@ -1289,14 +1304,15 @@ input[type="file"] {
 }
 .role{
   margin-bottom:5%;
-  width:65%;
+  width:70%;
   height:auto;
   justify-content: center;
 }
 .role h6{
   font-weight:100;
-  margin-top:2%;
+  margin-top:3%;
   font-size: clamp(0.80rem, 0.85vw, 0.9rem); 
+  line-height:1.5;
 }
 .role-heading {
   display: flex;
