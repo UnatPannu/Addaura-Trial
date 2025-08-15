@@ -226,12 +226,12 @@ body.nav-open .nav-toggle .close-icon {
 #cv-form input:focus::placeholder, #cv-form textarea:focus::placeholder{
     color:white;
 }
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus {
+#cv-form input:-webkit-autofill,
+#cv-form input:-webkit-autofill:hover,
+#cv-form input:-webkit-autofill:focus,
+#cv-form textarea:-webkit-autofill,
+#cv-form textarea:-webkit-autofill:hover,
+#cv-form textarea:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px black inset !important; /* Force black background */
   -webkit-text-fill-color: white !important; /* Force white text */
   background-color: black !important; /* Fallback */
