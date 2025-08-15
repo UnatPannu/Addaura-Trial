@@ -166,10 +166,8 @@ function initTeamsTalentAnimation() {
   ScrollTrigger.refresh();
   currentMode = "desktop"; // Mark current mode
 }
-
 // ✅ Run on load
 initTeamsTalentAnimation();
-
 // ✅ Re-run when switching between mobile & desktop/tablet
 window.addEventListener("resize", () => {
   const width = window.innerWidth;
@@ -179,17 +177,12 @@ window.addEventListener("resize", () => {
     initTeamsTalentAnimation(); // Switch to desktop/tablet mode
   }
 });
-
-
 // Run when page loads
 document.addEventListener("DOMContentLoaded", initTeamsTalentAnimation);
-
 // Run when navigating back/forward
 window.addEventListener("pageshow", initTeamsTalentAnimation);
-
 // Run when resizing
 window.addEventListener("resize", initTeamsTalentAnimation);
-
   // Form sections click logic
   const formSections = document.querySelectorAll('.form-section');
   formSections.forEach(section => {
@@ -202,7 +195,6 @@ window.addEventListener("resize", initTeamsTalentAnimation);
       }
     });
   });
-
   // Triangle intersection animations
   const triangleSections = document.querySelectorAll('.triangle-section');
   const triangleObserver = new IntersectionObserver(entries => {
@@ -215,24 +207,20 @@ window.addEventListener("resize", initTeamsTalentAnimation);
     threshold: 0.6
   });
   triangleSections.forEach(section => triangleObserver.observe(section));
-
   // Navbar hover sync with intro card wrappers
 const navbar = document.querySelector('.navbar');
 const firstCard = document.querySelector('.intro-card-wrapper:nth-child(1)');
 const logo = document.querySelector('#logo');
-
 if (navbar && firstCard && logo) {
   firstCard.addEventListener('mouseenter', () => {
     navbar.classList.add('hovered-intro');
     logo.src = 'assets/logo.svg'; // your hover version
   });
-
   firstCard.addEventListener('mouseleave', () => {
     navbar.classList.remove('hovered-intro');
     logo.src = 'assets/logo-black.svg'; // original logo
   });
 }
-
 const testimonials = [
   {
     text: "I've had the pleasure of engaging with Marco in his role as recruiter and find him to be a diligent, persistent and focused individual.",
@@ -240,14 +228,13 @@ const testimonials = [
   },
   {
     text: "Marco reached out to me for a position of VP of Engineering at Treyd while I had been freelancing for a couple of years, and has been straightforward and helpful from the start with communication and expectations which led me to follow through the offer and accept the offer in the end! Good follow up throughout the process on my side as a prospect, with a kind and nice touch in our communication that was much appreciated.",
-    author: "~ Ex- CTO at Zimpler and VP Engineering at Treyd"
+    author: "~ Ex-CTO at Zimpler and VP Engineering at Treyd"
   },
   {
     text: "My relationship with Marco has been very smooth and cooperative from the beginning. Marco is highly competent and respectful of each request from the candidate taking care of all the aspects during the selection process. It was really a pleasure to meet him and I trusted his work.",
     author: "~ Top biometric cards engineer and CISO in EU"
   }
 ];
-
 let index = 0;
 const testimonialEl = document.querySelector(".testimonial-2");
 const leftArrow = document.querySelector(".arrow.left");
