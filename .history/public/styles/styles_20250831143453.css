@@ -678,7 +678,7 @@ footer img{
     top: -30vh; /* same vertical as final heading */
     width: clamp(250px, 25%, 350px);
     opacity: 0;
-    background-image: url('https://si01k0cerpnzbf0t.public.blob.vercel-storage.com/HomePage/teams-talent-VDZ3ltnli4farCS5T7YsQMfXxlsEjG.png');
+    background-image: url('../assets/HomePage/teams-talent.png');
     background-size: cover;
     background-repeat: no-repeat;
     height: 350px;
@@ -2016,7 +2016,7 @@ button {
   margin-left:5%;
 }
 .teams-talent{
-  background-image:url('https://si01k0cerpnzbf0t.public.blob.vercel-storage.com/HomePage/teams-talent-VDZ3ltnli4farCS5T7YsQMfXxlsEjG.png');
+  background-image:url('../assets/HomePage/teams-talent.png');
   background-color: black;
   background-size:cover;
   background-repeat:no-repeat;

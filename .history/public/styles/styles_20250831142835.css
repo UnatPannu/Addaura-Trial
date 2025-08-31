@@ -608,7 +608,7 @@ footer img{
     height: 150px; /* initial height */
     border-radius: 10px;
     background-color: black;
-    background-image: url('https://si01k0cerpnzbf0t.public.blob.vercel-storage.com/HomePage/teams-talent-VDZ3ltnli4farCS5T7YsQMfXxlsEjG.png');
+    background-image: url('../assets/HomePage/teams-talent.png');
     background-position: center;
     background-size: cover;
     color: white;
@@ -678,7 +678,7 @@ footer img{
     top: -30vh; /* same vertical as final heading */
     width: clamp(250px, 25%, 350px);
     opacity: 0;
-    background-image: url('https://si01k0cerpnzbf0t.public.blob.vercel-storage.com/HomePage/teams-talent-VDZ3ltnli4farCS5T7YsQMfXxlsEjG.png');
+    background-image: url('../assets/HomePage/teams-talent.png');
     background-size: cover;
     background-repeat: no-repeat;
     height: 350px;
@@ -1933,7 +1933,7 @@ button {
   .hiring-wrapper {
   max-height: 70vh;
   margin: 15% auto;
-  background-image:url('https://si01k0cerpnzbf0t.public.blob.vercel-storage.com/HomePage/hands-PZ1er4xJad0GhIKVydo3sD8an4nKdK.png') !important;
+  background-image:url('../assets/HomePage/hands.png') !important;
   background-size: contain;
   background-position: center 100%;
   background-repeat:no-repeat;
@@ -2016,7 +2016,7 @@ button {
   margin-left:5%;
 }
 .teams-talent{
-  background-image:url('https://si01k0cerpnzbf0t.public.blob.vercel-storage.com/HomePage/teams-talent-VDZ3ltnli4farCS5T7YsQMfXxlsEjG.png');
+  background-image:url('../assets/HomePage/teams-talent.png');
   background-color: black;
   background-size:cover;
   background-repeat:no-repeat;
