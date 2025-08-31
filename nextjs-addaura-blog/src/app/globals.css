@@ -1,0 +1,133 @@
+@import "tailwindcss";
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Poppins',sans-serif;
+}
+/* Post container */
+.post {
+  max-width: 800px;        
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Inter', sans-serif;
+  color: #111;
+  line-height: 1.6;
+}
+
+/* Title */
+.post-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Published date */
+.post-date {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Featured image */
+.post-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+/* Body content */
+.post-body p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.post-body h2 {
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.post-body h3 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.post-body ul,
+.post-body ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.post-body a {
+  color: #0070f3;
+  text-decoration: underline;
+}
+
+/* Inline images inside body */
+.post-body img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+/* Mobile-first adjustments */
+@media (max-width: 768px) {  /* tablets */
+  .post {
+    padding: 0 1rem;
+  }
+  .post-title {
+    font-size: 2rem;
+  }
+  .post-body p {
+    font-size: 1rem;
+  }
+  .post-body h2 {
+    font-size: 1.4rem;
+  }
+  .post-body h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) { /* mobile phones */
+  .post {
+    padding: 0 0.75rem;
+    margin: 1.5rem auto;
+  }
+  .post-title {
+    font-size: 1.75rem;
+  }
+  .post-date {
+    font-size: 0.8rem;
+  }
+  .post-body p {
+    font-size: 0.95rem;
+  }
+  .post-body h2 {
+    font-size: 1.25rem;
+  }
+  .post-body h3 {
+    font-size: 1.1rem;
+  }
+  .post-image {
+    max-height: 300px;
+  }
+}

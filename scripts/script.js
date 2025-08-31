@@ -20,39 +20,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Glitch Effect
   const glitchImage = document.querySelector('.glitch-image');
-  if (glitchImage) {
-    const pixelGrid = glitchImage.querySelector('.pixel-grid');
-    for (let i = 0; i < 10000; i++) {
-      const pixel = document.createElement('div');
-      const delay = (Math.random() * 1).toFixed(2);
-      pixel.style.transitionDelay = `${delay}s`;
-      pixelGrid.appendChild(pixel);
-    }
-    const glitchObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        glitchImage.classList.toggle('visible', entry.isIntersecting);
-      });
-    }, { threshold: 0.5 });
-    glitchObserver.observe(glitchImage);
+if (glitchImage) {
+  const pixelGrid = glitchImage.querySelector('.pixel-grid');
+  for (let i = 0; i < 10000; i++) {
+    const pixel = document.createElement('div');
+    const delay = (Math.random() * 1).toFixed(2);
+    pixel.style.transitionDelay = `${delay}s`;
+    pixelGrid.appendChild(pixel);
   }
+
+  let hasPlayed = false; // prevent replay on scroll up
+
+  const glitchObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasPlayed) {
+        glitchImage.classList.add('visible');
+        hasPlayed = true; // only trigger once
+      }
+    });
+  }, { threshold: 0.5 });
+
+  glitchObserver.observe(glitchImage);
+}
+
 
   // Testimonials Logo Scroller
-  const logoContainer = document.querySelector('.logo-container');
-  if (logoContainer) {
-    const logosVisible = 5;
-    const scrollAmount = logoContainer.clientWidth / logosVisible;
-    let currentScroll = 0;
+const logoContainer = document.querySelector('.logo-container');
 
-    function scrollToNextLogo() {
-      currentScroll += scrollAmount;
-      if (currentScroll >= logoContainer.scrollWidth - logoContainer.clientWidth) {
-        currentScroll = 0;
-      }
-      logoContainer.scrollTo({ left: currentScroll, behavior: 'smooth' });
+if (logoContainer) {
+  const logosVisible = 5;
+  const scrollAmount = logoContainer.clientWidth / logosVisible;
+// Duplicate logos for seamless loop
+  logoContainer.innerHTML += logoContainer.innerHTML;
+
+  function scrollToNextLogo() {
+    // If we’re near the reset point, jump back instantly
+    if (logoContainer.scrollLeft >= logoContainer.scrollWidth / 2) {
+      logoContainer.scrollLeft = 0;
     }
 
-    setInterval(scrollToNextLogo, 2000);
+    // Then scroll smoothly
+    logoContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   }
+
+  setInterval(scrollToNextLogo, 2000); // one logo every 2s
+}
+  //Testimonials Mobile Scroller
+// Mobile testimonials auto-center scroller (works with 80% width + gap)
+const carousel =
+  document.querySelector(".testimonials-carousel") ||
+  document.querySelector(".testimonials-container");
+
+if (carousel && window.innerWidth <= 768) {
+  const items = Array.from(carousel.querySelectorAll(".testimonial"));
+  if (items.length) {
+    let i = 0;
+
+    // Center any slide in the viewport, regardless of widths/padding/gap
+    const centerTo = (el) => {
+      const left =
+        el.offsetLeft - (carousel.clientWidth - el.clientWidth) / 2;
+      carousel.scrollTo({ left, behavior: "smooth" });
+      items.forEach(it => it.classList.toggle("active", it === el));
+    };
+
+    // Ensure first slide is centered after layout paint
+    requestAnimationFrame(() => centerTo(items[0]));
+
+    // Auto-advance
+    const AUTO_MS = 5000;
+    let timer = setInterval(() => {
+      i = (i + 1) % items.length;
+      centerTo(items[i]);
+    }, AUTO_MS);
+
+    // If user scrolls by hand, highlight the centered one
+    const setActiveByCenter = () => {
+      const mid = carousel.scrollLeft + carousel.clientWidth / 2;
+      let best = items[0], bestDist = Infinity;
+      for (const el of items) {
+        const c = el.offsetLeft + el.clientWidth / 2;
+        const d = Math.abs(mid - c);
+        if (d < bestDist) { bestDist = d; best = el; }
+      }
+      items.forEach(it => it.classList.toggle("active", it === best));
+    };
+    carousel.addEventListener("scroll", setActiveByCenter);
+
+    // On resize, re-center current slide (dimensions change)
+    window.addEventListener("resize", () => {
+      centerTo(items[i]);
+    });
+  }
+}
+
+
 
   // Teams and Talent height adjustment
   const teamsTalent = document.querySelector(".teams-talent");
@@ -266,4 +328,81 @@ leftArrow.addEventListener("click", prevTestimonial);
 
 setInterval(nextTestimonial, 5000); // auto scroll every 5s
 
+
+
 });
+document.addEventListener("scroll", () => {
+  const section = document.querySelector(".industry-expertise");
+  const img = section.querySelector(".images-section img");
+
+  const rect = section.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  if (rect.top < windowHeight && rect.bottom > 0) {
+    // How far into the section we are
+    let progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+
+    // Increase parallax strength (try 200–300px instead of 100)
+    let offset = (progress - 0.5) * 300; 
+    img.style.transform = `translateY(${offset}px)`;
+  }
+});
+//for-teams-and-talent-services
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".content-section");
+  const labels = document.querySelectorAll(".label");
+  let isClickScrolling = false;
+
+  // Scroll spy
+  window.addEventListener("scroll", () => {
+    if (isClickScrolling) return;
+    let index = 0;
+    sections.forEach((sec, i) => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top <= window.innerHeight * 0.2 && rect.bottom >= window.innerHeight * 0.8) {
+        index = i;
+      }
+    });
+    sections.forEach((sec, i) => sec.classList.toggle("active", i === index));
+    labels.forEach((label, i) => label.classList.toggle("active", i === index));
+  });
+
+  // Click → scroll to exact section top
+  labels.forEach((label, i) => {
+    label.addEventListener("click", () => {
+      isClickScrolling = true;
+
+      const yOffset = -70; // adjust this if you want a small gap
+      const y = sections[i].getBoundingClientRect().top + window.scrollY + yOffset;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
+      });
+
+      sections.forEach((sec, j) => sec.classList.toggle("active", j === i));
+      labels.forEach((label, j) => label.classList.toggle("active", j === i));
+
+      setTimeout(() => {
+        isClickScrolling = false;
+      }, 800);
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const rightPanel = document.querySelector(".right-panel");
+
+  rightPanel.addEventListener("wheel", (e) => {
+    const atTop = rightPanel.scrollTop === 0;
+    const atBottom =
+      rightPanel.scrollHeight - rightPanel.scrollTop === rightPanel.clientHeight;
+
+    // If we are not at the boundary, prevent scrolling the page
+    if (!(atTop && e.deltaY < 0) && !(atBottom && e.deltaY > 0)) {
+      e.stopPropagation();
+    }
+  }, { passive: false });
+});
+
+
+
