@@ -9,8 +9,6 @@
         }
       ]
     }
-  ],
-  "builds": [
-    { "src": "src-site/index.html", "use": "@vercel/static" }
   ]
+
 }

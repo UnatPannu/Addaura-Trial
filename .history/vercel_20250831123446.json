@@ -11,6 +11,6 @@
     }
   ],
   "builds": [
-    { "src": "src-site/index.html", "use": "@vercel/static" }
+    { "src": "public/index.html", "use": "@vercel/static" }
   ]
 }
