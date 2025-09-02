@@ -1420,9 +1420,6 @@ input[type="file"] {
   font-size: clamp(0.95rem, 1vw, 1.12rem);
   letter-spacing:0.2px;
 }
-.for-teams-and-talent .mobile-drop-arrow img{
-  display:none;
-}
 .left-panel {
   position: sticky;
   top: 0;
@@ -2019,7 +2016,7 @@ button {
   margin-left:5%;
 }
 .teams-talent{
-  background-image:url('https://si01k0cerpnzbf0t.public.blob.vercel-storage.com/HomePage/teams-talent-VDZ3ltnli4farCS5T7YsQMfXxlsEjG.png');
+  background-image:url('');
   background-color: black;
   background-size:cover;
   background-repeat:no-repeat;
@@ -2331,12 +2328,6 @@ button {
     display:block;
     margin-bottom:5%;
     text-align:center;
-  }
-  .for-teams-and-talent .mobile-drop-arrow img{
-    display:block;
-    width:5%;
-    margin-right:5%;
-    margin-left:90%;
   }
 }
 /* Tablet only */

@@ -510,7 +510,7 @@ footer img{
   height: 100%;
   display: grid;
   grid-template-columns: repeat(100, 1fr);
-  grid-template-rows: repeat(100, 1fr);
+  grid-template-rows: repeat(200, 1fr);
   pointer-events: none;
 }
 
@@ -1420,9 +1420,6 @@ input[type="file"] {
   font-size: clamp(0.95rem, 1vw, 1.12rem);
   letter-spacing:0.2px;
 }
-.for-teams-and-talent .mobile-drop-arrow img{
-  display:none;
-}
 .left-panel {
   position: sticky;
   top: 0;
@@ -2331,12 +2328,6 @@ button {
     display:block;
     margin-bottom:5%;
     text-align:center;
-  }
-  .for-teams-and-talent .mobile-drop-arrow img{
-    display:block;
-    width:5%;
-    margin-right:5%;
-    margin-left:90%;
   }
 }
 /* Tablet only */

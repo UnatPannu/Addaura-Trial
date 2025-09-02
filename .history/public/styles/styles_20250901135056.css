@@ -1420,7 +1420,7 @@ input[type="file"] {
   font-size: clamp(0.95rem, 1vw, 1.12rem);
   letter-spacing:0.2px;
 }
-.for-teams-and-talent .mobile-drop-arrow img{
+.for-teams-and-talent .mobile-drop-arrow{
   display:none;
 }
 .left-panel {
@@ -2332,12 +2332,7 @@ button {
     margin-bottom:5%;
     text-align:center;
   }
-  .for-teams-and-talent .mobile-drop-arrow img{
-    display:block;
-    width:5%;
-    margin-right:5%;
-    margin-left:90%;
-  }
+  .for-teams-and-talent .
 }
 /* Tablet only */
 @media (min-width: 769px) and (max-width: 1024px) {

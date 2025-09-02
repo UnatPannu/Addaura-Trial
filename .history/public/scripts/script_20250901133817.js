@@ -23,11 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
 if (glitchImage) {
   const pixelGrid = glitchImage.querySelector('.pixel-grid');
   for (let i = 0; i < 10000; i++) {
-    const pixel = document.createElement('div');
-    const delay = (Math.random() * 1).toFixed(2);
-    pixel.style.transitionDelay = `${delay}s`;
-    pixelGrid.appendChild(pixel);
-  }
+  const pixel = document.createElement('div');
+
+  // random transition delay (stagger effect)
+  const delay = (Math.random() * 1).toFixed(2);
+  pixel.style.transitionDelay = `${delay}s`;
+
+  // random starting opacity for a grainy look
+  const opacity = Math.random() * 0.5 + 0.5; // 0.5 – 1
+  pixel.style.opacity = opacity;
+
+  pixelGrid.appendChild(pixel);
+}
+
 
   let hasPlayed = false; // prevent replay on scroll up
 

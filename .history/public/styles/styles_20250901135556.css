@@ -2310,6 +2310,9 @@ button {
   .for-teams-and-talent .right-panel .mobile-dropdown{
     display:none;
   }
+  .for-teams-and-talent .right-panel h5:active{
+    display:block;
+  }
   .for-teams-and-talent .sections-container{
     flex-direction:column;
     gap:10px;

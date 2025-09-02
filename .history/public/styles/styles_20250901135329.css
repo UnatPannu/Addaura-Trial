@@ -2334,9 +2334,8 @@ button {
   }
   .for-teams-and-talent .mobile-drop-arrow img{
     display:block;
-    width:5%;
+    height:5%;
     margin-right:5%;
-    margin-left:90%;
   }
 }
 /* Tablet only */

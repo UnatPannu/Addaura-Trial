@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const glitchImage = document.querySelector('.glitch-image');
 if (glitchImage) {
   const pixelGrid = glitchImage.querySelector('.pixel-grid');
-  for (let i = 0; i < 10000; i++) {
+  for (let i = 0; i < 40000; i++) {
     const pixel = document.createElement('div');
     const delay = (Math.random() * 1).toFixed(2);
     pixel.style.transitionDelay = `${delay}s`;

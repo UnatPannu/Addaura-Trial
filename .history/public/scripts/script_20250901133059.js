@@ -276,7 +276,7 @@ const logo = document.querySelector('#logo');
 if (navbar && firstCard && logo) {
   firstCard.addEventListener('mouseenter', () => {
     navbar.classList.add('hovered-intro');
-    logo.src = 'assets/logo.png'; // your hover version
+    logo.src = 'assets/logo.svg'; // your hover version
   });
   firstCard.addEventListener('mouseleave', () => {
     navbar.classList.remove('hovered-intro');
