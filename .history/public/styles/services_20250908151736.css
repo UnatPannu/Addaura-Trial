@@ -1,0 +1,91 @@
+/*Top Section*/
+.services .top-section video{
+  opacity:0.6;
+}
+.services .industry-expertise .section-content p{
+  width:80%;
+}
+.services .industry-expertise .section-content a{
+  text-decoration:none;
+}
+.services .hero-section .cta{
+  margin-top:5%;
+}
+/*Industry Expertise*/
+.industry-expertise {
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  height: 100vh; /* parallax section height */
+  justify-content: center;
+}
+.images-section {
+  flex: 1;
+  height: 100vh;
+  background-image: url("your-image.jpg");
+  background-size: contain;     /* or cover if you want full fill */
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* 🔥 parallax feel */
+}
+.images-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;       /* ✅ show full image */
+  object-position: left;     /* ✅ stick to left side */
+  display: block;
+  transform: translateY(var(--parallax-offset, 0));
+  transition: transform 0.1s linear;
+}
+.industry-expertise .section-content{
+    width:60%;
+    margin-left:10%;
+    z-index:2;
+}
+.industry-expertise .section-content h3{
+  margin-bottom:1.75rem;
+}
+.industry-expertise .section-content h4{
+  margin-bottom:0.5rem;
+}
+.industry-expertise .section-content p{
+  margin-bottom:1.5rem;
+  font-weight:300;
+}
+/*Roles Covered*/
+.roles-covered{
+  height:100vh;
+  width:100vw;
+}
+.roles-covered h2{
+  margin: 12% 15%;
+  margin-bottom:3%;
+}
+.roles-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+  grid-auto-rows: auto;   /* 3 rows that size to content */
+  gap: 50px;
+  width:80%;
+  margin-left:15%;
+}
+.role{
+  margin-bottom:5%;
+  width:80%;
+  height:auto;
+  justify-content: center;
+}
+.role p{
+  margin-top:3%;
+  line-height:1.5;
+}
+.role-heading {
+  display: flex;
+  flex-direction:row;
+}
+.role-heading img{
+  width:7%;
+  margin-right:2%;
+  margin-bottom:1%;
+}

@@ -1,0 +1,27 @@
+.contact .get-in-touch .form-section h5{
+  font-weight:var(--light-weight);
+  width:120%;
+}
+.contact .get-in-touch #hiring-section hr{
+  width:100%;
+}
+.contact #hiring-section:hover hr{
+  width:120%;
+}
+/*Mobile and Tablet*/
+@media(max-width:1024px){
+    .contact{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;  /* vertical centering */
+        align-items: center;      /* horizontal centering */
+        min-height: 100vh;   
+    }
+    .contact .get-in-touch{
+        margin-top:40%; 
+    }
+    .contact .form-section{
+        margin-block:0;
+        padding-block:0;
+    }
+}

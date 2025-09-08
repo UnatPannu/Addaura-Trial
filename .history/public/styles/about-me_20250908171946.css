@@ -1,0 +1,398 @@
+.intro-section {
+  width: 100vw;
+  height:140vh;
+  position: relative;
+  overflow: hidden;
+  margin-top: 5%;
+}
+/* When any child card is hovered, expand the intro-section */
+.intro-section.expanded {
+  height: 210vh;
+}
+
+.intro-card-wrapper:nth-child(2) .intro-card h3 {
+  width: 100%;
+  text-align: right; /* centers the heading text */
+  margin-left: auto;
+  margin-right: 5%;
+  margin-bottom:20%;
+}
+.intro-card-wrapper:nth-child(3).expanded .intro-card h3  {
+  margin-left:0;
+  padding-left: 2rem; 
+  margin-bottom:2.5%;
+}
+.intro-card-wrapper:nth-child(3) h3{
+  margin-left:-10rem;
+}
+.intro-card-wrapper:nth-child(3) .intro-card {
+  margin-left: auto !important;  /* centers horizontally */
+  margin-right: auto !important;
+  padding-left: 0;               /* remove left padding */
+  width: fit-content;            /* shrink container to content width */
+  max-width: 90%;               /* prevent overflow */
+  text-align: center;            /* center text inside */
+}
+/* Wrappers: handle positioning + hover shifts */
+.intro-card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: visible;
+  transition: transform 0.5s ease, height 0.25s ease;
+  padding-bottom: 2rem;
+  pointer-events: auto;  /* fix: allow interaction for hover */
+}
+
+.card-bg,
+.card-solid-bg {
+  pointer-events: none;  
+}
+.card-bg.rotated-bg {
+  pointer-events: auto;
+}
+.intro-card-wrapper .intro-card {
+  pointer-events: auto;
+  will-change: transform, width; /* fix: optimize transitions */
+}
+.intro-card-wrapper:nth-child(1) { z-index: 1; }
+.intro-card-wrapper:nth-child(2) { margin-top: -60vh; z-index: 2; }
+.intro-card-wrapper:nth-child(3) { margin-top: -40vh; z-index: 3; }
+
+/* Background container + images */
+.card-bg-container {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+}
+.card-bg {
+  position: absolute;
+  top: 50%;
+  width: 120vw; 
+  height: 120vh;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.intro-card-wrapper:nth-child(1) .card-bg,
+.intro-card-wrapper:nth-child(3) .card-bg { left: -10vw; }
+.intro-card-wrapper:nth-child(2) .card-bg { right: -10vw; left: auto; }
+.intro-card-wrapper:nth-child(1) .card-bg {
+  background-image: url('../assets/About-Me/intro-card-1.png');
+  transform: rotate(40deg) translateY(10vh);
+}
+.intro-card-wrapper:nth-child(2) .card-bg {
+  background-image: url('../assets/About-Me/intro-card-2.png');
+  transform: rotate(-15deg) translateY(-30vh);
+}
+.intro-card-wrapper:nth-child(3) .card-bg {
+  background-image: url('../assets/About-Me/intro-card-3.png');
+  transform: rotate(23deg) translateY(-10vh);
+}
+
+/* Card content */
+.intro-card {
+  z-index: 1;
+  width: 30%;
+  padding: 2rem 1rem;
+  transition: transform 0.4s ease, width 0.4s ease;
+  color: inherit;
+  will-change: transform, width; /* fix: optimize transitions */
+}
+.intro-card-wrapper:nth-child(1) .intro-card {
+  margin-left: 10%;
+  margin-right: auto;
+  text-align: left;
+  color: white;
+}
+.intro-card-wrapper:nth-child(2) .intro-card {
+  margin-left: auto;
+  margin-right: 10%;
+  text-align: right;
+  color: white;
+  width: 53%;  
+}
+.intro-card-wrapper:nth-child(3) .intro-card {
+  /* fix: keep margin static, move position with transform instead */
+  margin-left: 10rem;
+  text-align: left;
+  color: black;
+  padding-top: 2rem;
+  transition: transform 0.4s ease, width 0.4s ease;
+  will-change: transform, width;
+}
+
+/* Hover effects: wrapper moves, bg follows */
+.intro-card-wrapper:nth-child(2).expanded {
+  transform: translateY(20vh);
+  height: 130vh;
+}
+.intro-card-wrapper:nth-child(2).expanded + .intro-card-wrapper:nth-child(3) {
+  transform: translateY(50vh);
+}
+.intro-card-wrapper:nth-child(2).expanded .card-bg {
+  transform: rotate(-15deg) translateY(20vh);
+  min-height:180vh;
+}
+.intro-card-wrapper:nth-child(2).expanded #thinner-heading{
+  width:100%;
+  margin-top:5%;
+  margin-bottom:5%;
+  text-align:left;
+}
+
+.intro-card-wrapper:nth-child(2).expanded .card-solid-bg {
+  height: 180vh;
+}
+.intro-card-wrapper:nth-child(3).expanded .intro-card{
+  /* fix: only transform, do not change margin-left */
+  transform: translateY(30vh);
+}
+.intro-card-wrapper:nth-child(3).expanded .card-bg {
+  transform: rotate(23deg);
+}
+
+/* Optional: content tweak on hover */
+.intro-card-wrapper:nth-child(2).expanded .intro-card {
+  text-align: left;
+}
+
+/* Background overlays */
+.card-solid-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.intro-card-wrapper:nth-child(1) .card-solid-bg { background-color: black; }
+.intro-card-wrapper:nth-child(2) .card-solid-bg { background-color: #1c4e80; }
+.intro-card-wrapper:nth-child(3) .card-solid-bg { background-color: #a6dcef; }
+.intro-card-wrapper.expanded .card-bg { opacity: 0; }
+.intro-card-wrapper.expanded .card-solid-bg { opacity: 1; }
+/* Hidden content reveal */
+.intro-card .hidden-content { display: none; }
+.intro-card-wrapper.expanded .intro-card .hidden-content {
+  display: block; opacity: 1;
+}
+
+/* Headings and lists */
+.intro-card h3 {
+  transition: color 0.5s ease;
+  width: 110%;
+  margin-top:-6rem;
+  font-size: clamp(1.7rem, 2.3vw, 3rem);
+}
+.intro-card-wrapper:nth-child(3) {
+  justify-content: flex-start;
+}
+.intro-card-wrapper:nth-child(3) .intro-card {
+  margin-left: 0;
+  padding-left: 2rem; /* or even 0 if you want flush left */
+  width: 30%; /* normal state */
+  text-align: left;
+}
+.intro-card-wrapper:nth-child(3).expanded .intro-card {
+  width: 100%; /* expands to full, but stays left-aligned */
+}
+
+#thinner-heading { width: 60%; }
+.intro-card li { margin-bottom:2.5%; font-weight:var(--light-weight);}
+.intro-card ul{width:95%;margin-inline:auto;}
+
+/* Hover expansion widths */
+.intro-card-wrapper:nth-child(1).expanded .intro-card { width: 35%; }
+.intro-card-wrapper:nth-child(2).expanded .intro-card { width: 50%; }
+.intro-card-wrapper:nth-child(3).expanded .intro-card { width: 100%; }
+
+/* Columns inside cards */
+.card-columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5rem;
+  margin: 0;
+  max-width: 90%;
+  align-items: flex-start;
+  padding-left: 2rem;
+  width: 100%;
+  text-align: left;
+}
+
+/* Make first column 40% width */
+.card-columns .card-section:first-child {
+  flex: 0 0 40%; /* do not grow/shrink, fixed 40% */
+}
+
+/* Make second column 60% width */
+.card-columns .card-section:last-child {
+  flex: 0 0 50%; /* do not grow/shrink, fixed 60% */
+}
+.card-section { flex: 1; }
+
+/* Allow vertical growth for content */
+.intro-card-wrapper.expanded .intro-card {
+  max-height: 200vh;
+  padding-bottom: 10rem;
+  transform:scale(1);
+}
+
+/* Get in touch section */
+.get-in-touch-2 {
+  position: relative;
+  z-index: 5;
+  margin-top: -35vh;
+  width: 100vw;
+  height: 85vh;
+  background-image: url('../assets/touch-wave.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  display: flex;
+  padding-left: 10%;
+  padding-top: 8%;
+  align-items: center;
+}
+
+/* Button styling */
+#touch-button {
+  background-color: #1c4e80;
+  border-radius: 40px;
+  border: 3px solid #1c4e80;
+  color: white;
+  padding: 0.25em 0.5em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 1s ease;              
+  margin-top: 10%;  
+  margin-left:-10rem;
+}
+#touch-button:hover {
+  background-color: white;
+  color: black;
+  border-color:white;
+}
+
+/* 3rd card fixes */
+.intro-card-wrapper:nth-child(3) .card-bg-container {
+  overflow: visible;
+}
+.intro-card-wrapper:nth-child(3) .card-bg {
+  top: 20%;               
+  height: 140vh;          
+  transform: rotate(23deg) translateY(-30vh); 
+  left: -10vw;            
+  z-index: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease, height 0.5s ease;
+}
+.intro-card-wrapper:nth-child(3).expanded .card-bg {
+  transform: rotate(23deg) translateY(0); 
+}
+.intro-card-wrapper:nth-child(3) .card-solid-bg {
+  z-index: 2;
+}
+.intro-card-wrapper:nth-child(3) .intro-card {
+  position: relative; 
+  z-index: 3;         
+}
+
+/* 2nd card fixes */
+.intro-card-wrapper:nth-child(2) .card-bg-container {
+  overflow: visible; 
+}
+.intro-card-wrapper:nth-child(2) .card-bg {
+  top: 20%;
+  height: 140vh; 
+  transform: rotate(-15deg) translateY(-5vh); 
+  right: -10vw; 
+  left: auto;
+  z-index: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease, height 0.5s ease;
+}
+.intro-card-wrapper:nth-child(2).expanded .card-bg {
+  transform: rotate(-15deg) translateY(0); 
+}
+.intro-card-wrapper:nth-child(2) .card-solid-bg {
+  z-index: 2;
+}
+.intro-card-wrapper:nth-child(2) .intro-card {
+  position: relative; 
+  z-index: 3;         
+}
+.intro-card-wrapper:nth-child(3) {
+  align-items: flex-start;
+}
+.intro-card-wrapper:nth-child(1).hovered .card-bg.rotated-bg {
+  transform: rotate(40deg) translateY(10vh) scale(1.1);
+}
+
+.intro-card-wrapper:nth-child(2).hovered .card-bg.rotated-bg {
+  transform: rotate(-15deg) translateY(-30vh) scale(1.1);
+}
+
+.intro-card-wrapper:nth-child(3).hovered .card-bg.rotated-bg {
+  transform: rotate(23deg) translateY(-10vh) scale(1.1);
+}
+.intro-card-wrapper.hovered .intro-card h3 {
+  transform: scale(1.1);
+  transition: transform 0.5s ease-out;
+}
+
+/*Building Teams*/
+.build-teams-2 {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin-top: -5%; /* ⬅️ Adjust this value as needed */
+    z-index: 1;
+    margin-bottom:20%;
+    background-color:black;
+}
+.build-teams-2 video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.build-teams-2 h4{
+    font-weight:bold;
+    color:white;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width:auto;
+    white-space:nowrap;
+}
+.build-teams-2 img{
+    z-index:5;
+    position:absolute;
+    bottom:-13%;
+    width:100vw;
+}
+/*Mobile and Tablet*/
+@media(max-width:1024px){
+    .intro-card-wrapper .card-bg.rotated-bg{
+        transform:rotate(0deg);
+        width:90vw;
+        height:120%;
+    }
+    
+}
+/*Mobile Only*/
+@media(max-width:768px){
+    .build-teams-2 h5 {
+        margin-left: auto;
+    }
+    .intro-card-wrapper {
+        width: 40%;
+    }
+    .intro-section {
+        height: auto;
+    }
+}

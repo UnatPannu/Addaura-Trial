@@ -1,0 +1,9 @@
+:root {
+  --section-padding: clamp(1rem, 7.3%, 5rem);
+  --light-weight: 250;
+  --semi-bold:600;
+  --bold:600;
+}
+.contact .forms-section .form-section h5{
+    font-weight:var(--light-weight);
+}

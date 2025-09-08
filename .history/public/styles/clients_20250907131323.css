@@ -1,0 +1,20 @@
+.team-section{
+  width:100vw;
+  height:50vh;
+  position:relative;
+  margin-top:10%;
+  margin-bottom:8%;
+}
+.team-section p{
+  font-weight:300;
+}
+.team-section h4,.team-section p{
+  width:40%;
+  margin-inline:auto;
+  margin-bottom:2%;
+}
+.team-section .bottom-text{
+  color:black;
+  position:absolute;
+  bottom:30px;
+}

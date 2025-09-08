@@ -1,0 +1,142 @@
+/*Top Section*/
+.clients .top-section{
+  background-color: #111827;
+  height:95vh;
+}
+.testimonials-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* full height */
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.testimonials-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom:10%;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+}
+.testimonial-2 {
+  max-width: 80%;
+  text-align: center;
+  color:white;
+  padding-bottom:5%;
+}
+.testimonial-2 p {
+  font-size: clamp(1.1rem, 1.25vw, 1.5rem); /* ≈ 24px */
+  font-weight: var(--semi-bold);
+  line-height: 1.5;
+  margin-bottom: 5%;
+}
+.testimonial-2 span {
+  font-size: clamp(0.8rem, 0.9vw, 1.06rem);
+  color: #cbd5e1;
+}
+.arrow {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.arrow img {
+  width: 18px;    /* adjust thinness */
+  height: auto;
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+.arrow:hover img {
+  opacity: 0.6;
+}
+.arrow.left {
+  position: absolute;
+  left: -50px; /* adjust for layout */
+  top: 50%;
+  transform: translateY(-50%);
+}
+.arrow.right {
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.fade {
+  animation: fadeEffect 0.6s;
+}
+/*Team Collaborations*/
+.team-section{
+  width:100vw;
+  height:50vh;
+  position:relative;
+  margin-top:10%;
+  margin-bottom:8%;
+  text-align:center;
+}
+.team-section p{
+  font-weight:300;
+}
+.team-section h4,.team-section p{
+  width:40%;
+  margin-inline:auto;
+  margin-bottom:2%;
+}
+.team-section .bottom-text{
+  color:black;
+  position:absolute;
+  bottom:30px;
+}
+.logo-container.dark {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  background-color: white; 
+  gap: 5%;
+  padding: 2%;
+  margin-left: -7%;
+  margin-top:1%;
+}
+.logo-container.dark .testimonial-logo {
+  background-color: #111827; /* switched */
+}
+.logo-container.dark::-webkit-scrollbar { 
+  display: none;
+}
+.bottom-text {
+  position: absolute;
+  left: 5%;
+  bottom:10%;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  z-index:2;
+}
+@media (max-width: 1024px) {
+.arrow.left {
+    left: 10px;   /* keep inside */
+  }
+  .arrow.right {
+    right: 10px;  /* keep inside */
+  }
+  .arrow img {
+    width: 20px;  /* a bit smaller for mobile */
+    padding-inline:15%;
+  }
+  .testimonial-2 p{
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .testimonial-2 span{
+    max-width:70%;
+    padding-left:5%;
+  }
+  .logo-container.dark img{
+    width:100%;
+  }
+}
+/*M

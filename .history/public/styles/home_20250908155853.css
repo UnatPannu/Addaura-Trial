@@ -1,0 +1,564 @@
+@keyframes glitch1Anim {
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0.6;
+    }
+    25% {
+        transform: translate(4px, -2px);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translate(-3px, 1px);
+        opacity: 0.5;
+    }
+    75% {
+        transform: translate(2px, -1px);
+        opacity: 0.45;
+    }
+}
+@keyframes glitch2Anim {
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0.6;
+    }
+    20% {
+        transform: translate(-3px, 2px);
+        opacity: 0.4;
+    }
+    45% {
+        transform: translate(3px, -1px);
+        opacity: 0.5;
+    }
+    70% {
+        transform: translate(-2px, 1px);
+        opacity: 0.45;
+    }
+}
+@keyframes glitch3Anim {
+    0%, 100% { transform: translate(0, 0); opacity: 0.6; }
+    50% { transform: translate(3px, -5px); opacity: 0.4; }
+}
+@keyframes glitch4Anim {
+    0%, 100% { transform: translate(0, 0); opacity: 0.6; }
+    50% { transform: translate(-5px, 3px); opacity: 0.4; }
+}
+
+/*Hiring Section*/
+.hiring-wrapper{
+    height:100vh;
+    width:100vw;
+    background-color:white;
+    position: relative;
+    width: 100vw;
+}
+.glitch-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+.glitch-image {
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.glitch-image img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    user-select: none;
+    pointer-events: none;
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 1.5s ease-out;
+}
+.glitch-image.visible img{
+    clip-path: circle(150% at 50% 50%);
+}
+.glitch-layer {
+    z-index: 2;
+    opacity: 0.6;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+.glitch1 {
+    filter: drop-shadow(1px 1px rgb(179, 0, 255));
+    animation: glitch1Anim 2s infinite ease-in-out;
+    opacity:0.8;
+}
+.glitch2 {
+    filter: drop-shadow(2px 2px rgb(251, 0, 255));
+    animation: glitch2Anim 2.2s infinite ease-in-out;
+    opacity:0.8;
+}
+.glitch3 {
+    filter: drop-shadow(1px 1px rgb(0, 98, 255));
+    animation: glitch3Anim 2.5s infinite ease-in-out;
+    opacity:0.8;
+}
+.glitch4 {
+    filter: drop-shadow(2px 2px rgb(13, 255, 0));
+    animation: glitch4Anim 2.9s infinite ease-in-out;
+    opacity:0.8;
+}
+.pixel-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+  pointer-events: none;
+}
+.pixel-grid div {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+.glitch-image.visible .pixel-grid div {
+  opacity: 0;
+}
+.hiring-wrapper{
+  position:relative;
+}
+.hiring-section{
+    width:40%;
+    margin-left:8%;
+    padding-top:5%;
+    z-index: 10;
+    color:black;
+    position: relative;
+    background-color: white;
+}
+.hiring-section p{
+    width:83%;
+    margin-top:3%;
+    letter-spacing:0.5px;
+}
+.hiring-wrapper h6{
+  text-decoration:underline;
+  position:absolute;
+  bottom:8%;
+  right:8%;
+}
+
+/*Building Teams*/
+.building-teams{
+    width:100vw;
+    min-height:100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+.building-teams .mobile-heading {
+  display:none;
+}
+.building-teams video{
+    height: 80vh;      /* taller than width */
+    width: 45%;       /* keep aspect ratio */
+    border-radius: 40px;
+    object-fit: cover;
+}
+.building-teams .section-content{
+    width: 40%;
+    box-sizing: border-box;
+    display: flex;             /* new */
+    flex-direction: column;    /* keep text stacked */
+    justify-content: center; 
+}
+.building-teams .section-content h2{
+    padding-bottom:8%;
+    width:90%;
+}
+.building-teams .section-content p{
+    width:90%;
+}
+.building-teams .section-content ul{
+    font-weight:var(--light-weight);
+    line-height:1.6;
+    margin-top:3%;
+}
+.building-teams .section-content li{  
+    margin-left:5%;
+}
+.home-page .get-in-touch h1{
+    margin-left:10%;
+}
+.home-page .get-in-touch .forms-container{
+    margin-top:10%;
+}
+
+/*For Teams and Talent*/
+.teams-talent {
+    margin-top:10%;
+    width: 100vw;
+    position: relative;
+    overflow: visible;
+}
+.teams-talent .heading #mobile{
+    display:none;
+}
+.teams-talent .heading {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 150px; /* initial height */
+    border-radius: 10px;
+    background-color: black;
+    background-image: url('https://si01k0cerpnzbf0t.public.blob.vercel-storage.com/HomePage/teams-talent-VDZ3ltnli4farCS5T7YsQMfXxlsEjG.png');
+    background-position: center;
+    background-size: cover;
+    color: white;
+    margin: 0 auto;
+    padding: 5%;
+    text-align: center;
+    z-index: 10;
+    cursor: default;
+    transition: none !important; 
+    display: flex;        
+    flex-direction: column;    
+    justify-content: center; 
+    align-items: center;    
+}
+.teams-talent .heading h3{
+  font-size: clamp(2.1rem, 2.5vw, 2.94rem);
+  margin-bottom:1%;
+}
+.heading-list {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    font-weight: var(--light-weight);
+    list-style-type: disc;
+    color: white;
+    }
+.heading.spot-hiring {
+    text-align: left;
+    padding-left: 2rem;
+    padding-block: 4%;
+    padding-inline:2%;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.heading.spot-hiring h3{
+    font-size: clamp(1rem, 2vw, 1.375rem); /* ≈ 22px */
+    font-weight:500;
+    margin-bottom: 8%;
+    margin-left:5%;
+}
+.heading.spot-hiring p{
+    margin-left:5%;
+}
+.heading.spot-hiring ul{
+     padding-inline: var(--section-padding);
+    font-weight: var(--light-weight);
+}
+.teams-talent .sections-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    gap: 3rem;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    z-index: 0;
+}
+.teams-talent .section {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    padding-block: 4%;
+    padding-inline:2%;
+    flex: none;
+    position: absolute; /* to stack under heading initially */
+    top: -30vh; /* same vertical as final heading */
+    width: clamp(250px, 25%, 350px);
+    opacity: 0;
+    background-image: url('https://si01k0cerpnzbf0t.public.blob.vercel-storage.com/HomePage/teams-talent-VDZ3ltnli4farCS5T7YsQMfXxlsEjG.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 350px;
+    display: block;
+    text-decoration: none;
+    transition: transform 0.1s ease;
+    transform-origin: center;
+}
+.teams-talent .section:hover{
+    transform: scale(1.1);
+}
+.section:nth-child(1) {
+    background-position: left center;
+}
+.teams-talent .section:nth-child(2) {
+    background-position: center center;
+}
+.teams-talent .section:nth-child(3) {
+    background-position: right center;
+}
+
+.teams-talent .section ul {
+    padding-inline: var(--section-padding);
+    font-weight: var(--light-weight);
+}
+.teams-talent .section h4,
+.teams-talent .section p {
+    margin-bottom: 8%;
+    margin-left:5%;
+}
+
+/*Mobile Only*/
+@media (max-width:768px){
+    .hiring-wrapper {
+    max-height: 70vh;
+    margin: 15% auto;
+    background-image:url('https://si01k0cerpnzbf0t.public.blob.vercel-storage.com/HomePage/hands-PZ1er4xJad0GhIKVydo3sD8an4nKdK.png') !important;
+    background-size: contain;
+    background-position: center 100%;
+    background-repeat:no-repeat;
+  }
+  .hiring-wrapper h6{
+    right: auto;          /* remove right positioning */
+    position:relative;
+    left: 50%;            /* anchor to middle */
+    transform: translateX(-50%);
+    text-align: center;
+    white-space:nowrap;
+    padding-top:6%;
+  }
+  .glitch-container {
+    display: none;
+  }
+  .hiring-section {
+    width: 80%;
+    text-align: center;
+    margin-inline:auto;
+  }
+  .hiring-section h2{
+    margin-bottom:10%;
+  }
+  .hiring-section p {
+    width: 100%;
+    margin-bottom:7%;
+  }
+  .building-teams {
+    width: 100vw;
+    margin: 10% auto;
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    height:fit-content;
+    }
+    .building-teams video {
+    width: 80%;
+    height: auto; /* maintain aspect ratio */
+    display: block;
+    position:absolute;
+    top:10%;
+    border-radius:20px;
+    background-color: #111827;
+    }
+    .building-teams .section-content h2{
+    display:none;
+    }
+    .building-teams .mobile-heading {
+    color: white;
+    position: absolute;
+    top:22.5%; 
+    left: 50%;  
+    transform: translate(-50%, -50%); 
+    text-align: center;
+    width: 80%;
+    z-index: 5; 
+    display:block;
+    }
+    .building-teams .section-content-small{
+    width: 80%;
+    margin-inline: auto !important;
+    background-color: #111827;
+    border-radius:20px;
+    border:2px solid #111827;
+    color:white;
+    padding: 1.75rem 1.25rem!important;
+    position:absolute;
+    top:40%;
+    left:50%;
+    transform:translateX(-50%);
+    text-align:center;
+    }
+    .building-teams .section-content-small p{
+    margin-bottom:8%;
+    }
+    .building-teams .section-content-small ul{
+    text-align:left;
+    margin-left:5%;
+    }
+  .teams-talent{
+    background-image:url('https://si01k0cerpnzbf0t.public.blob.vercel-storage.com/HomePage/teams-talent-VDZ3ltnli4farCS5T7YsQMfXxlsEjG.png');
+    background-color: black;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:40% top;
+  }
+  .teams-talent .heading {
+    position: static;
+    transform: none;
+    width: 80%;
+    height: auto;
+    padding: 2rem 1rem;
+    margin-left: auto;
+    background:none;
+  }
+  .teams-talent .heading h3{
+    font-size: clamp(30px, 3.7vw, 53px);
+    margin-bottom: -25%;
+    white-space: nowrap;
+  }
+  .teams-talent .heading #desktop{
+    display:none;
+  }
+  .teams-talent .heading #mobile{
+    display:block;
+    white-space: nowrap;
+    margin-bottom:5%;
+    font-size: clamp(14px, 2.0vw, 24px);
+  }
+  .teams-talent .heading.spot-hiring {
+    padding: 2rem 1rem;
+    align-items: flex-start;
+  }
+  .teams-talent .sections-container {
+    flex-direction: column;
+    gap: 2rem;
+    position: static;
+    padding: 1rem;
+  }
+  .teams-talent .section {
+    position: static;
+    opacity: 1;
+    width: 90%;
+    padding: 8%;
+    height: auto;
+    pointer-events: auto;
+    user-select: auto;
+    background-image: none;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .section h4,
+  .section p {
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+  }
+  .section ul {
+    padding-left: 1.5rem;
+  }
+  .testimonials{
+    background-color: white;
+    margin-block: 8%;
+    padding-bottom: 15%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem; 
+  }
+  .testimonials video{
+    visibility:hidden;
+  }
+  .testimonials .logo-container {
+    gap: 5%;
+    padding: 0% 5%;
+    margin-left: 5%;
+    margin-bottom: 0rem;
+  }
+  .testimonials .logo-container img {
+    width:120%;
+    object-fit: contain;
+    filter: invert(100%);
+  }
+  .testimonial-logo {
+    flex: 0 0 40%;       /* width of each logo block */
+    height: 80px;        /* shorter than width = rectangular */
+    background-color: #111827;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem; /* optional */
+  }
+  .testimonials-container {
+    position:relative;    /* override absolute */
+    padding:0;            /* remove desktop padding */
+    justify-content:unset; /* allow scroll */
+    display:flex;
+    flex-direction:row;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    gap:0.25rem;
+    padding-inline:20%;
+    margin-top:0;
+  }
+  .testimonials-container::-webkit-scrollbar { display:none; }
+  .testimonial {
+    flex:0 0 120%;        /* override desktop width */
+    scroll-snap-align:center;
+    border-radius:1rem;
+    transform:scale(0.75);
+    transition:transform .4s ease;
+    background-color:#111827;
+    color:white;
+    text-align: center; /* centers the last line */
+    padding:12%;
+  }
+  .testimonial a{
+    color:white;
+  }
+  .testimonial.active { transform:scale(1); }
+  .testimonial h6{
+    font-weight:var(--semi-bold);
+    font-size: clamp(18px, 2.2vw, 30px);
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+  .testimonial h6 b{
+    font-weight:var(--light-weight);
+    font-size: clamp(14px, 1.5vw, 22px);
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+  .testimonial img {
+    width: 13%;
+    filter: invert(50%) grayscale(20%);
+    padding-block:5%;
+  }
+}
+/*Tablet Only*/
+@media (min-width: 769px) and (max-width: 1024px) {
+    .teams-talent .section{
+        height: 450px;
+        width:30%;
+    }
+    .teams-talent .heading{
+        padding-block:4rem;
+        padding-inline:1rem;
+    }
+    .teams-talent .spot-hiring{
+        padding-block:1.5rem;
+    }
+}

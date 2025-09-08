@@ -1,0 +1,207 @@
+document.addEventListener('DOMContentLoaded', () => {
+  //Menu Toggle for Mobile
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+  navToggle.addEventListener('click', () => {
+    document.body.classList.toggle('nav-open');
+  });
+  // Marquee duplication
+  const marquees = document.querySelectorAll(".marquee");
+  marquees.forEach((marquee) => {
+    const content = marquee.querySelector(".marquee-content");
+    const originalHTML = content.innerHTML;
+    while (marquee.scrollWidth < window.innerWidth * 2) {
+      content.innerHTML += originalHTML;
+    }
+  });
+  
+
+
+  
+  
+
+  // Navbar hover sync with intro card wrappers
+
+
+// Testimonials desktop scroller
+const testimonials = [
+  {
+    text: "I've had the pleasure of engaging with Marco in his role as recruiter and find him to be a diligent, persistent and focused individual.",
+    author: "~ Ex-Klarna, Spotify, and Volvo Cars Engineering and Product leader"
+  },
+  {
+    text: "Marco reached out to me for a position of VP of Engineering at Treyd while I had been freelancing for a couple of years, and has been straightforward and helpful from the start with communication and expectations which led me to follow through the offer and accept the offer in the end! Good follow up throughout the process on my side as a prospect, with a kind and nice touch in our communication that was much appreciated.",
+    author: "~ Ex-CTO at Zimpler and VP Engineering at Treyd"
+  },
+  {
+    text: "My relationship with Marco has been very smooth and cooperative from the beginning. Marco is highly competent and respectful of each request from the candidate taking care of all the aspects during the selection process. It was really a pleasure to meet him and I trusted his work.",
+    author: "~ Top biometric cards engineer and CISO in EU"
+  }
+];
+let index = 0;
+const testimonialEl = document.querySelector(".testimonial-2");
+const leftArrow = document.querySelector(".arrow.left");
+const rightArrow = document.querySelector(".arrow.right");
+
+function showTestimonial(i) {
+  testimonialEl.classList.remove("fade");
+  void testimonialEl.offsetWidth; // reset animation
+  testimonialEl.classList.add("fade");
+
+  testimonialEl.innerHTML = `
+    <p>“${testimonials[i].text}”</p>
+    <span>${testimonials[i].author}</span>
+  `;
+}
+
+function nextTestimonial() {
+  index = (index + 1) % testimonials.length;
+  showTestimonial(index);
+}
+
+function prevTestimonial() {
+  index = (index - 1 + testimonials.length) % testimonials.length;
+  showTestimonial(index);
+}
+
+rightArrow.addEventListener("click", nextTestimonial);
+leftArrow.addEventListener("click", prevTestimonial);
+
+setInterval(nextTestimonial, 5000); // auto scroll every 5s
+
+
+
+});
+document.addEventListener("scroll", () => {
+  const section = document.querySelector(".industry-expertise");
+  const img = document.querySelector(".industry-expertise .images-section img");
+  if (!img) {
+    console.warn("Image inside .industry-expertise not found.");
+  }
+
+  const rect = section.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  if (rect.top < windowHeight && rect.bottom > 0) {
+    // How far into the section we are
+    let progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+
+    // Increase parallax strength (try 200–300px instead of 100)
+    let offset = (progress - 0.5) * 300; 
+    img.style.transform = `translateY(${offset}px)`;
+  }
+});
+//for-teams-and-talent-services
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".content-section");
+  const labels = document.querySelectorAll(".label");
+  let isClickScrolling = false;
+
+  // Scroll spy
+  window.addEventListener("scroll", () => {
+    if (isClickScrolling) return;
+    let index = 0;
+    sections.forEach((sec, i) => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top <= window.innerHeight * 0.2 && rect.bottom >= window.innerHeight * 0.8) {
+        index = i;
+      }
+    });
+    sections.forEach((sec, i) => sec.classList.toggle("active", i === index));
+    labels.forEach((label, i) => label.classList.toggle("active", i === index));
+  });
+
+  // Click → scroll to exact section top
+  labels.forEach((label, i) => {
+    label.addEventListener("click", () => {
+      isClickScrolling = true;
+
+      const yOffset = -70; // adjust this if you want a small gap
+      const y = sections[i].getBoundingClientRect().top + window.scrollY + yOffset;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
+      });
+
+      sections.forEach((sec, j) => sec.classList.toggle("active", j === i));
+      labels.forEach((label, j) => label.classList.toggle("active", j === i));
+
+      setTimeout(() => {
+        isClickScrolling = false;
+      }, 800);
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const rightPanel = document.querySelector(".right-panel");
+
+  rightPanel.addEventListener("wheel", (e) => {
+    const atTop = rightPanel.scrollTop === 0;
+    const atBottom =
+      rightPanel.scrollHeight - rightPanel.scrollTop === rightPanel.clientHeight;
+
+    // If we are not at the boundary, prevent scrolling the page
+    if (!(atTop && e.deltaY < 0) && !(atBottom && e.deltaY > 0)) {
+      e.stopPropagation();
+    }
+  }, { passive: false });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const firstSection = document.querySelector('.intro-card-wrapper');
+  const navbar = document.querySelector('nav.navbar.light-navbar');
+  const introSection = document.querySelector('.intro-section');
+
+  console.log('firstSection:', firstSection);
+  console.log('navbar:', navbar);
+  console.log('introSection:', introSection);
+
+  if (!firstSection || !navbar || !introSection) {
+    console.error('One or more elements not found');
+    return;
+  }
+
+  firstSection.addEventListener('click', () => {
+    navbar.classList.toggle('dark-mode');
+    introSection.classList.toggle('dark-bg');
+    console.log('click toggled');
+  });
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const wrappers = document.querySelectorAll('.intro-card-wrapper');
+  const introSection = document.querySelector('.intro-section');
+
+  function collapseAll() {
+    wrappers.forEach(wrapper => wrapper.classList.remove('expanded'));
+    introSection.classList.remove('expanded');
+  }
+
+  wrappers.forEach(wrapper => {
+    wrapper.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent clicks bubbling up and collapsing
+
+      const isExpanded = wrapper.classList.contains('expanded');
+
+      if (isExpanded) {
+        // If already expanded, collapse it
+        wrapper.classList.remove('expanded');
+        introSection.classList.remove('expanded');
+      } else {
+        // Collapse others and expand this one
+        collapseAll();
+        wrapper.classList.add('expanded');
+        introSection.classList.add('expanded');
+      }
+    });
+  });
+
+  // Collapse if clicking outside any card
+  document.addEventListener('click', () => {
+    collapseAll();
+  });
+});
