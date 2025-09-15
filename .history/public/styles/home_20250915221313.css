@@ -326,7 +326,7 @@
 /*Mobile Only*/
 @media (max-width:768px){
     .hiring-wrapper {
-        max-height: 85vh;
+        max-height: 0vh;
         margin: 15% auto;
         background-image:url('https://si01k0cerpnzbf0t.public.blob.vercel-storage.com/HomePage/hands-PZ1er4xJad0GhIKVydo3sD8an4nKdK.png') !important;
         background-size: contain;
@@ -340,7 +340,7 @@
         transform: translateX(-50%);
         text-align: center;
         white-space:nowrap;
-        padding-top:5%;
+        padding-top:3%;
     }
     .glitch-container {
         display: none;
