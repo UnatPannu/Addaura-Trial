@@ -1,0 +1,67 @@
+document.addEventListener('DOMContentLoaded', () => {
+  //Menu Toggle for Mobile
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+  navToggle.addEventListener('click', () => {
+    document.body.classList.toggle('nav-open');
+  });
+  // Marquee duplication
+  const marquees = document.querySelectorAll(".marquee");
+  marquees.forEach((marquee) => {
+    const content = marquee.querySelector(".marquee-content");
+    const originalHTML = content.innerHTML;
+    while (marquee.scrollWidth < window.innerWidth * 2) {
+      content.innerHTML += originalHTML;
+    }
+  });
+   // Form sections click logic
+    const formSections = document.querySelectorAll('.form-section');
+    formSections.forEach(section => {
+        section.addEventListener('click', function (e) {
+            if (e.target.closest('form') || e.target.classList.contains('wave-button')) return;
+            const isActive = this.classList.contains('active');
+            formSections.forEach(sec => sec.classList.remove('active'));
+            if (!isActive) {
+                this.classList.add('active');
+        }
+        });
+    });
+});
+const cvLabel = document.getElementById('cv-label');
+const cvClickDiv = document.getElementById('cv-click');
+const fileInput = document.getElementById('resume');
+
+cvLabel.addEventListener('click', () => {
+  cvClickDiv.classList.toggle('focus');
+});
+
+fileInput.addEventListener('change', () => {
+  const files = fileInput.files;
+  const fileNameSpan = document.getElementById('file-name');
+  if (files.length === 0) {
+    fileNameSpan.textContent = 'No file chosen';
+    cvClickDiv.classList.remove('focus');
+  } else if (files.length === 1) {
+    fileNameSpan.textContent = files[0].name;
+    cvClickDiv.classList.add('focus');
+  } else {
+    fileNameSpan.textContent = `${files.length} files selected`;
+    cvClickDiv.classList.add('focus');
+  }
+});
+
+
+// Testimonials Logo Scroller
+    const logoContainer = document.querySelector('.logo-container');
+    if (logoContainer) {
+        const logosVisible = 5;
+        const scrollAmount = logoContainer.clientWidth / logosVisible;
+    logoContainer.innerHTML += logoContainer.innerHTML; // Duplicate logos for seamless loop
+    function scrollToNextLogo() {
+        if (logoContainer.scrollLeft >= logoContainer.scrollWidth / 2) {     // If we’re near the reset point, jump back instantly
+            logoContainer.scrollLeft = 0;
+        }
+        logoContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });         // Then scroll smoothly
+    }
+    setInterval(scrollToNextLogo, 2000); // one logo every 2s
+}

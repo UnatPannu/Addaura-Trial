@@ -1,6 +1,3 @@
-body {
-  overflow: hidden;
-}
 :root {
   --section-padding: clamp(1rem, 7.3%, 5rem);
   --light-weight: 250;
@@ -227,10 +224,6 @@ footer img{
 .bold-text{
     font-weight:var(--semi-bold);
 }
-input[type="file"] {
-  display: none;
-}
-
 /*animations*/
 @keyframes scroll-left {
     0% {
@@ -604,46 +597,29 @@ input[type="file"] {
     display: none;
 }
 .custom-file-upload {
-  max-height: 2px;
-  color: transparent !important;
-  overflow: hidden;
-  transition: max-height 0.4s ease, color 0.3s ease;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  background-color: white;
-  border-radius: 5px;
-  font-weight: 300 !important;
-  font-size: clamp(0.575rem, 0.75vw, 0.75rem) !important;
-  max-width: 78% !important;
-  margin-inline: auto !important;
-  transition: 0.75s;
-  gap:23%;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin-inline:auto !important;
+    max-width: 78% !important;
+    color: transparent !important;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: clamp(0.575rem, 1vw, 1rem) !important; 
+    font-weight: 600 !important;
+    transition: background-color 0.3s;
+    max-height:2px;
 }
-
-#cv-click.focus .custom-file-upload {
-  max-height: 50px;
-  color: black !important;
-}
-
-#file-name {
-  color: white;
-  font-size: clamp(0.5rem, 0.45vw, 0.75rem);
-  margin-top: 0.2em;
-  text-align:center;
-  margin-inline:auto;
-  display:block;
-  width:100%;
-}
-
 #cv-click.focus .custom-file-upload{
   max-height:50px;
-  color:black !important;
-    text-align: center;
+  color:black;
 }
 .custom-file-upload img{
   width:12%;
   margin-block:auto;
+}
+.custom-file-upload:hover {
+    background-color: rgb(179, 211, 244);
 }
 #file-name{
     color:white;

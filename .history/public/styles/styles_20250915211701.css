@@ -1,6 +1,3 @@
-body {
-  overflow: hidden;
-}
 :root {
   --section-padding: clamp(1rem, 7.3%, 5rem);
   --light-weight: 250;
@@ -227,10 +224,6 @@ footer img{
 .bold-text{
     font-weight:var(--semi-bold);
 }
-input[type="file"] {
-  display: none;
-}
-
 /*animations*/
 @keyframes scroll-left {
     0% {
@@ -613,12 +606,10 @@ input[type="file"] {
   cursor: pointer;
   background-color: white;
   border-radius: 5px;
-  font-weight: 300 !important;
-  font-size: clamp(0.575rem, 0.75vw, 0.75rem) !important;
+  font-weight: 600 !important;
+  font-size: clamp(0.575rem, 1vw, 1rem) !important;
   max-width: 78% !important;
   margin-inline: auto !important;
-  transition: 0.75s;
-  gap:23%;
 }
 
 #cv-click.focus .custom-file-upload {
@@ -639,11 +630,13 @@ input[type="file"] {
 #cv-click.focus .custom-file-upload{
   max-height:50px;
   color:black !important;
-    text-align: center;
 }
 .custom-file-upload img{
   width:12%;
   margin-block:auto;
+}
+.custom-file-upload:hover {
+    background-color: rgb(179, 211, 244);
 }
 #file-name{
     color:white;

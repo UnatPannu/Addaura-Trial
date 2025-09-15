@@ -1,8 +1,3 @@
-window.onload = () => {
-  // Enable scrolling after full page load
-  document.body.style.overflow = 'auto';
-  // Remove any loading screen or placeholder here
-};
 document.addEventListener('DOMContentLoaded', () => {
   // Menu Toggle for Mobile
   const navToggle = document.querySelector('.nav-toggle');

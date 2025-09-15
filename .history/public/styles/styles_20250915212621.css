@@ -1,6 +1,3 @@
-body {
-  overflow: hidden;
-}
 :root {
   --section-padding: clamp(1rem, 7.3%, 5rem);
   --light-weight: 250;
@@ -227,10 +224,6 @@ footer img{
 .bold-text{
     font-weight:var(--semi-bold);
 }
-input[type="file"] {
-  display: none;
-}
-
 /*animations*/
 @keyframes scroll-left {
     0% {
@@ -618,7 +611,7 @@ input[type="file"] {
   max-width: 78% !important;
   margin-inline: auto !important;
   transition: 0.75s;
-  gap:23%;
+  gap:50%;
 }
 
 #cv-click.focus .custom-file-upload {
