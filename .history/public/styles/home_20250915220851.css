@@ -151,9 +151,6 @@
 }
 .hiring-wrapper h6{
   text-decoration:underline;
-  position:absolute;
-  bottom:8%;
-  right:8%;
 }
 
 /*Building Teams*/
@@ -340,7 +337,7 @@
         transform: translateX(-50%);
         text-align: center;
         white-space:nowrap;
-        padding-top:3%;
+        padding-top:6%;
     }
     .glitch-container {
         display: none;

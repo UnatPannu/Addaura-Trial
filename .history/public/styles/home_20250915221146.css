@@ -340,7 +340,7 @@
         transform: translateX(-50%);
         text-align: center;
         white-space:nowrap;
-        padding-top:3%;
+        padding-top:%;
     }
     .glitch-container {
         display: none;

@@ -340,7 +340,7 @@
         transform: translateX(-50%);
         text-align: center;
         white-space:nowrap;
-        padding-top:3%;
+        padding-top:6%;
     }
     .glitch-container {
         display: none;
@@ -357,6 +357,7 @@
         width: 100%;
         margin-bottom:7%;
     }
+    .hiring-section
     .building-teams {
         width: 100vw;
         margin: 10% auto;
