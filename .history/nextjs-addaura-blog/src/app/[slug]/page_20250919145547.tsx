@@ -1,17 +1,13 @@
-import { PortableText, type PortableTextComponents, type PortableTextComponentProps, type PortableTextMarkComponentProps } from "@portabletext/react";
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import { client } from "../sanity/client";
 import Link from "next/link";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityDocument } from "next-sanity";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import type { TypedObject } from '@portabletext/types';
+import type { PortableTextBlock } from "@portabletext/types";
+import type { ReactNode } from "react";
 
-interface LinkMark extends TypedObject {
-  _type: "link";
-  href?: string;
-  blank?: boolean;
-}
 interface Params {
   slug: string;
 }
@@ -83,68 +79,67 @@ export default async function PostPage({ params }: { params: Params }) {
       },
     },
     block: {
-      h1: (props: PortableTextComponentProps<any>) => (
-        <h1 className="text-5xl font-bold mt-8 mb-6">{props.children}</h1>
+      h1: ({ children }: { children: ReactNode }) => (
+        <h1 className="text-5xl font-bold mt-8 mb-6">{children}</h1>
       ),
-      h2: (props: PortableTextComponentProps<any>) => (
-        <h2 className="text-4xl font-semibold mt-8 mb-5">{props.children}</h2>
+      h2: ({ children }: { children: ReactNode }) => (
+        <h2 className="text-4xl font-semibold mt-8 mb-5">{children}</h2>
       ),
-      h3: (props: PortableTextComponentProps<any>) => (
-        <h3 className="text-3xl font-semibold mt-6 mb-4">{props.children}</h3>
+      h3: ({ children }: { children: ReactNode }) => (
+        <h3 className="text-3xl font-semibold mt-6 mb-4">{children}</h3>
       ),
-      h4: (props: PortableTextComponentProps<any>) => (
-        <h4 className="text-2xl font-semibold mt-5 mb-3">{props.children}</h4>
+      h4: ({ children }: { children: ReactNode }) => (
+        <h4 className="text-2xl font-semibold mt-5 mb-3">{children}</h4>
       ),
-      h5: (props: PortableTextComponentProps<any>) => (
-        <h5 className="text-xl font-semibold mt-4 mb-2">{props.children}</h5>
+      h5: ({ children }: { children: ReactNode }) => (
+        <h5 className="text-xl font-semibold mt-4 mb-2">{children}</h5>
       ),
-      h6: (props: PortableTextComponentProps<any>) => (
-        <h6 className="text-lg font-semibold mt-3 mb-2">{props.children}</h6>
+      h6: ({ children }: { children: ReactNode }) => (
+        <h6 className="text-lg font-semibold mt-3 mb-2">{children}</h6>
       ),
-      normal: (props: PortableTextComponentProps<any>) => (
-        <p className="mb-4 leading-relaxed">{props.children}</p>
+      normal: ({ children }: { children: ReactNode }) => (
+        <p className="mb-4 leading-relaxed">{children}</p>
       ),
-      blockquote: (props: PortableTextComponentProps<any>) => (
+      blockquote: ({ children }: { children: ReactNode }) => (
         <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-700 my-6">
-          {props.children}
+          {children}
         </blockquote>
       ),
-      ul: (props: PortableTextComponentProps<any>) => (
-        <ul className="list-disc list-inside mb-4">{props.children}</ul>
+      ul: ({ children }: { children: ReactNode }) => (
+        <ul className="list-disc list-inside mb-4">{children}</ul>
       ),
-      ol: (props: PortableTextComponentProps<any>) => (
-        <ol className="list-decimal list-inside mb-4">{props.children}</ol>
+      ol: ({ children }: { children: ReactNode }) => (
+        <ol className="list-decimal list-inside mb-4">{children}</ol>
       ),
-      li: (props: PortableTextComponentProps<any>) => (
-        <li className="mb-2">{props.children}</li>
-      ),
+      li: ({ children }: { children: ReactNode }) => <li className="mb-2">{children}</li>,
     },
     marks: {
-  strong: (props: PortableTextMarkComponentProps<any>) => (
-    <strong className="font-bold">{props.children}</strong>
-  ),
-  em: (props: PortableTextMarkComponentProps<any>) => (
-    <em className="italic">{props.children}</em>
-  ),
-  code: (props: PortableTextMarkComponentProps<any>) => (
-    <code className="bg-gray-100 text-red-600 px-1 py-0.5 rounded">{props.children}</code>
-  ),
-  link: (props: PortableTextMarkComponentProps<LinkMark>) => {
-    const href = props.value?.href;
-    const blank = props.value?.blank;
-    if (!href) return <>{props.children}</>;
-    return (
-      <a
-        href={href}
-        target={blank ? "_blank" : "_self"}
-        rel="noreferrer"
-        className="text-blue-600 hover:underline"
-      >
-        {props.children}
-      </a>
-    );
-  },
-},
+      strong: ({ children }: { children: ReactNode }) => (
+        <strong className="font-bold">{children}</strong>
+      ),
+      em: ({ children }: { children: ReactNode }) => (
+        <em className="italic">{children}</em>
+      ),
+      code: ({ children }: { children: ReactNode }) => (
+        <code className="bg-gray-100 text-red-600 px-1 py-0.5 rounded">{children}</code>
+      ),
+      link: ({
+        children,
+        value,
+      }: {
+        children: ReactNode;
+        value: { href?: string; blank?: boolean };
+      }) => (
+        <a
+          href={value?.href}
+          target={value?.blank ? "_blank" : "_self"}
+          rel="noreferrer"
+          className="text-blue-600 hover:underline"
+        >
+          {children}
+        </a>
+      ),
+    },
   };
 
   return (
@@ -169,7 +164,7 @@ export default async function PostPage({ params }: { params: Params }) {
 
       <div className="prose max-w-none">
         {Array.isArray(post.body) && (
-          <PortableText value={post.body} components={components} />
+          <PortableText value={post.body as PortableTextBlock[]} components={components} />
         )}
       </div>
     </main>

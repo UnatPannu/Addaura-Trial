@@ -5,13 +5,7 @@ import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityDocument } from "next-sanity";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import type { TypedObject } from '@portabletext/types';
 
-interface LinkMark extends TypedObject {
-  _type: "link";
-  href?: string;
-  blank?: boolean;
-}
 interface Params {
   slug: string;
 }
@@ -129,14 +123,14 @@ export default async function PostPage({ params }: { params: Params }) {
   code: (props: PortableTextMarkComponentProps<any>) => (
     <code className="bg-gray-100 text-red-600 px-1 py-0.5 rounded">{props.children}</code>
   ),
-  link: (props: PortableTextMarkComponentProps<LinkMark>) => {
+  link: (props: PortableTextMarkComponentProps<{ href?: string; blank?: boolean }>) => {
     const href = props.value?.href;
     const blank = props.value?.blank;
     if (!href) return <>{props.children}</>;
     return (
       <a
         href={href}
-        target={blank ? "_blank" : "_self"}
+        target={blank ? '_blank' : '_self'}
         rel="noreferrer"
         className="text-blue-600 hover:underline"
       >
