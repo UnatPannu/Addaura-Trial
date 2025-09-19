@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive About Me</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .box {
+            position: relative;
+            width: 100%;
+            height: 33.33vh; /* Equal height boxes */
+            color: white;
+            cursor: pointer;
+            transition: all 0.5s ease-in-out;
+            display: flex;
+        }
+
+        /* Title positioning and styling */
+        .box .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            transition: opacity 0.3s;
+            padding: 0 5vw;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* First and third box title alignment */
+        .box:nth-child(1) .title,
+        .box:nth-child(3) .title {
+            justify-content: flex-start; /* Align text to left */
+        }
+
+        /* Second box title alignment */
+        .box:nth-child(2) .title {
+            justify-content: flex-end; /* Align text to right */
+        }
+
+        .box .details {
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 5vh 10vw;
+            transition: opacity 0.3s;
+            display: none;
+        }
+        
+        .box .details h2 {
+            margin-bottom: 1rem;
+        }
+
+        .box .details p, .box .details li {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .box .details ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+
+        /* Box colors */
+        .box:nth-child(1) {
+            background-color: #1A2536; /* Dark blue */
+            top:500px;
+            height:1000px;
+            rotate: 40deg;
+            right:20px;
+            /* text-align: start; */
+        }
+        /* Text */
+        .box:nth-child(1) .title{
+            position: relative;
+            /* font-family:; */
+            font-size: 3rem;
+            rotate: -40deg;
+            /* top:-500px; */
+            /* z-index: 9999999; */
+            /* border: 2px solid red; */
+            width: 50vw;
+            height:40vh;
+            left: -30px;
+            top: 40px;
+
+        }
+        .box:nth-child(2) {
+            background-color: #2A5275; /* Medium blue */
+            top:-300px;
+            height:700px;
+            rotate: -15deg;
+            width:120vw;
+            right:170px;
+        }
+
+        .box:nth-child(2) .title{
+             position: relative;
+            /* font-family:; */
+            font-size: 3rem;
+            rotate: 15deg;
+            /* top:-500px; */
+            z-index: 9999999;
+            /* border: 2px solid red; */
+            width: 50vw;
+            height:40vh;
+            right:-860px;
+            top: 40px;
+            text-align: end;
+        }
+
+        .box:nth-child(3) {
+            background-color: #89C4D4; /* Light blue */
+            top:-750px;
+            height:700px;
+            rotate: 23deg;
+            width:120vw;
+            right:0px;
+
+        }
+
+        .box:nth-child(3) .title{
+            color: black;
+            font-size: 3rem;
+            position: relative;
+            top:40px;
+            rotate: -23deg;
+            width: 35vw;
+            height: 40vh;
+            /* border: 2px solid red; */
+            right:-30px;
+        }
+        .box:nth-child(1).active{
+
+        }
+        /* Active State */
+        .box.active {
+            height: 70vh;
+            rotate:0deg;
+            top:0;
+        }
+        .box.active .box:nth
+        .box.active .title {
+            opacity: 0;
+        }
+
+        .box.active .details {
+            opacity: 1;
+            display: block;
+        }
+
+        /* Shrink other boxes when one is active */
+        .container.active .box:not(.active) {
+            height: 15vh;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="box">
+            <div class="title">I'm Marco Mannino, founder of Addaura Rec.</div>
+            <div class="details">
+                <h2>About Me</h2>
+                <p>This is the detailed content for the first section. It appears when the box is clicked.</p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="title">What Makes Addaura Different?</div>
+            <div class="details">
+                <h2>What Makes Addaura Different?</h2>
+                <p>Addaura isn't your typical recruitment agency. It's built on values that actually show up in the work:</p>
+                <ul>
+                    <li><strong>Human-first:</strong> I work as a trusted partner — not a salesperson. No pressure, no scripts. Just honest conversations and solutions built around your goals.</li>
+                    <li><strong>Culture fit matters:</strong> I help you build your team your way — based on real alignment, not just job titles.</li>
+                    <li><strong>Transparency always:</strong> I give real feedback, admit when I don't know something, and keep confidential searches truly confidential. No fluff. No surprises.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="box">
+            <div class="title">How Does it Work?</div>
+            <div class="details">
+                <h2>How Does it Work?</h2>
+                <p>This is the detailed content for the third section. It appears when the box is clicked.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const container = document.querySelector('.container');
+        const boxes = document.querySelectorAll('.box');
+
+        boxes.forEach(box => {
+            box.addEventListener('click', () => {
+                const isActive = box.classList.contains('active');
+
+                // Remove 'active' from all boxes and container
+                boxes.forEach(b => b.classList.remove('active'));
+                container.classList.remove('active');
+
+                // If the box was not active, make it active
+                if (!isActive) {
+                    box.classList.add('active');
+                    container.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
