@@ -5,11 +5,7 @@ import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityDocument } from "next-sanity";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import type { TypedObject } from "@portabletext/types";
-
-interface GenericTypedObject extends TypedObject {
-  _type: string;
-}
+import type { TypedObject } from '@portabletext/types';
 
 interface LinkMark extends TypedObject {
   _type: "link";
@@ -124,13 +120,13 @@ export default async function PostPage({ params }: { params: Params }) {
       ),
     },
     marks: {
-  strong: (props: PortableTextMarkComponentProps<GenericTypedObject>) => (
+  strong: (props: PortableTextMarkComponentProps<unknown>) => (
     <strong className="font-bold">{props.children}</strong>
   ),
-  em: (props: PortableTextMarkComponentProps<GenericTypedObject>) => (
+  em: (props: PortableTextMarkComponentProps<unknown>) => (
     <em className="italic">{props.children}</em>
   ),
-  code: (props: PortableTextMarkComponentProps<GenericTypedObject>) => (
+  code: (props: PortableTextMarkComponentProps<unknown>) => (
     <code className="bg-gray-100 text-red-600 px-1 py-0.5 rounded">{props.children}</code>
   ),
   link: (props: PortableTextMarkComponentProps<LinkMark>) => {

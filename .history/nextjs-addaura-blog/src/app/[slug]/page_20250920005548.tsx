@@ -5,6 +5,7 @@ import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityDocument } from "next-sanity";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import type { TypedObject } from '@portabletext/types';
 import type { TypedObject } from "@portabletext/types";
 
 interface GenericTypedObject extends TypedObject {
