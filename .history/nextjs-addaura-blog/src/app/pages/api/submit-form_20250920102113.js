@@ -21,6 +21,7 @@ export default async function handler(req, res) {
     // Handle preflight - just return the headers and 200
     return res.status(200).end();
   }
+  
   //Form Submission Handling
   if (req.method !== 'POST') return res.status(405).end('Method Not Allowed');
 
