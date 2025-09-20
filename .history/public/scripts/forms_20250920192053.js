@@ -63,7 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
       talentForm.reset();
       document.getElementById('file-name').textContent = 'No file chosen';
     } catch (error) {
-      console.error('Talent form submission error:', error);
+    console.error('Talent form submission error:', error);
+    alert('Talent form submission failed!');
       alert('Talent form submission failed!');
     }
   });

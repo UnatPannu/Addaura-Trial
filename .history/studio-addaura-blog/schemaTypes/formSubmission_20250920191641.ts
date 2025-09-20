@@ -26,7 +26,7 @@ const formSubmission = defineType({
       name: "cv",
       title: "CV File",
       type: "reference",
-      to: [{ type: "file" }],
+      to: [{ type: "fileAsset" }],
     }),
     defineField({ name: "submittedAt", title: "Submitted At", type: "datetime" }),
   ],
