@@ -17,7 +17,6 @@ const CORS_HEADERS = {
 export async function OPTIONS() {
   return new Response(null, { status: 204, headers: CORS_HEADERS });
 }
-
 export async function POST(request) {
   const data = await request.json();
   const { name, email, mobile, 'mobile-no': mobileNo, query, formType, cvAssetId } = data;
