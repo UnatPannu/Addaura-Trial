@@ -9,14 +9,12 @@ const sanityClient = createClient({
 });
 
 export default async function handler(req, res) {
-  //CORS headers
   res.setHeader('Access-Control-Allow-Origin', 'https://addaura-trial.vercel.app');
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
-  //Form Submission Handling
   if (req.method !== 'POST') return res.status(405).end('Method Not Allowed');
 
   const data = req.body;
