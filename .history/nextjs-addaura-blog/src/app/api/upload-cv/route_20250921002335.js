@@ -21,9 +21,14 @@ const headers = {
   'Access-Control-Allow-Methods': 'POST,OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
 };
+
 if (request.method === 'OPTIONS') {
   return new Response(null, { headers });
 }
+
+// For actual request respond with headers:
+return new Response(JSON.stringify(...), { status: ..., headers });
+
 export async function POST(request) {
   return new Promise((resolve) => {
     const form = new IncomingForm();

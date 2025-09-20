@@ -21,6 +21,7 @@ const headers = {
   'Access-Control-Allow-Methods': 'POST,OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
 };
+
 if (request.method === 'OPTIONS') {
   return new Response(null, { headers });
 }

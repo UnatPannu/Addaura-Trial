@@ -16,14 +16,7 @@ const sanityClient = createClient({
   token: process.env.SANITY_API_TOKEN,
   useCdn: false,
 });
-const headers = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST,OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
-if (request.method === 'OPTIONS') {
-  return new Response(null, { headers });
-}
+
 export async function POST(request) {
   return new Promise((resolve) => {
     const form = new IncomingForm();
@@ -58,8 +51,8 @@ export async function POST(request) {
             headers: { 'Content-Type': 'application/json' },
           })
         );
-      } catch (error) {
-        console.error('Sanity upload error:', error);
+      } catchcatch (error) {
+  console.error('Sanity upload error:', error); {
         resolve(
           new Response(JSON.stringify({ error: 'Sanity upload failed' }), { status: 500 })
         );
