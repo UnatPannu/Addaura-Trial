@@ -63,22 +63,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   talentButton.addEventListener('click', async (e) => {
-  e.preventDefault();
-  try {
-    const fileInput = document.getElementById('resume');
-    let cvAssetId = null;
-    if (fileInput.files.length > 0) {
-      cvAssetId = await uploadCV(fileInput.files[0]);
+    e.preventDefault();
+    try {
+      const fileInput = document.getElementById('resume');
+      let cvAssetId = null;
+      if (fileInput.files.length > 0) {
+        cvAssetId = await uploadCV(fileInput.files[0]);
+      }
+      await sendFormData(talentForm, 'Talent', cvAssetId);
+      alert('Talent form submitted successfully!');
+      talentForm.reset();
+      document.getElementById('file-name').textContent = 'No file chosen';
+    } catch (error) {
+      console.error('Talent form submission error:', error);
+      alert('Talent form submission failed!');
     }
-    await sendFormData(talentForm, 'Talent', cvAssetId);
-    alert('Talent form submitted successfully!');
-    talentForm.reset();
-    document.getElementById('file-name').textContent = 'No file chosen';
-  } catch (error) {
-    console.error('Talent form submission error:', error.message);
-    alert(`Talent form submission failed: ${error.message}`);
-  }
-});
+  });
 
   // Update file name display when file selected
   document.getElementById('resume').addEventListener('change', (e) => {
