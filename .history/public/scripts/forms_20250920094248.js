@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const talentForm = document.getElementById('talent');
   const talentButton = document.querySelector('#talent-section .wave-button');
-  const API_BASE = "https://my-nextjs-app.vercel.app";
+
   // CV upload function
   async function uploadCV(file) {
     const formData = new FormData();
     formData.append('resume', file);
 
-    const res = await fetch(`${API_BASE}/api/upload-cv`, {
+    const res = await fetch('https://my-nextjs-app.vercel.app/api/upload-cv', {
       method: 'POST',
       body: formData,
     });
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       data.cvAssetId = cvAssetId;
     }
 
-    const res = await fetch(`${API_BASE}/api/submit-form`, {
+    const res = await fetch('/api/submit-form', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)

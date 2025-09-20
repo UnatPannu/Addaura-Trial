@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       data.cvAssetId = cvAssetId;
     }
 
-    const res = await fetch(`${API_BASE}/api/submit-form`, {
+    const res = await fetch('https://addaura-trial-next.vercel.app/api/submit-form', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
