@@ -25,20 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
   async function sendFormData(formEl, formType, cvAssetId = null) {
   const formData = new FormData(formEl);
   const data = Object.fromEntries(formData.entries());
-
   data.formType = formType;
   if (cvAssetId) {
     data.cvAssetId = cvAssetId;
-  }
-
-  // Remap keys for talent form before sending
-  if (formType === 'Talent') {
-    data.name = data.name1;
-    data.email = data.email1;
-    data.mobile = data.mobile1;
-    delete data.name1;
-    delete data.email1;
-    delete data.mobile1;
   }
 
   const res = await fetch(`${API_BASE}/api/submit-form`, {
@@ -54,11 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (errorData.error) {
         errorMessage = errorData.error;
       }
-    } catch {}
+    } catch {
+      // Ignore JSON parse errors
+    }
     throw new Error(errorMessage);
   }
 }
-
 
 
   hiringButton.addEventListener('click', async (e) => {
