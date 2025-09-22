@@ -152,14 +152,11 @@
     margin-bottom:5%;
   }
   .clients .testimonial-2 span{
+    max-width:85%;
     font-size: clamp(14px, 1.5vw, 15px);
-    display: block;
-    max-width: 85%;
-    margin-inline: auto;
-    text-align: center;     /* center text inside */
-      padding: 0;
-  margin-left: auto !important;
-  margin-right: auto !important;
+    display:block;
+    text-align:center;
+    margin-inline:auto;
   }
   .logo-container.dark{
     display:none;

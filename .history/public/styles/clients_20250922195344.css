@@ -145,7 +145,7 @@
 /*Mobile Only*/
 @media(max-width:768px){
   .clients .testimonial-2 p{
-    width:85%;
+    width:90%;
     font-size: clamp(16px, 1.6vw, 23px);
     display:block;
     margin-inline:auto;

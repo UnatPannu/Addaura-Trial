@@ -116,9 +116,6 @@
   color: #cbd5e1;
   z-index:2;
 }
-.mobile-cta, .mobile-text{
-  display:none;
-}
 @media (max-width: 1024px) {
 .arrow.left {
     left: 10px;   /* keep inside */
@@ -144,7 +141,7 @@
 }
 /*Mobile Only*/
 @media(max-width:768px){
-  .clients .testimonial-2 p{
+    .clients .testimonial-2 p{
     width:85%;
     font-size: clamp(16px, 1.6vw, 23px);
     display:block;
@@ -152,45 +149,18 @@
     margin-bottom:5%;
   }
   .clients .testimonial-2 span{
+    max-width:85%;
     font-size: clamp(14px, 1.5vw, 15px);
-    display: block;
-    max-width: 85%;
-    margin-inline: auto;
-    text-align: center;     /* center text inside */
-      padding: 0;
-  margin-left: auto !important;
-  margin-right: auto !important;
+    display:block;
+    padding-left:26px;
+    text-align:justify;
   }
   .logo-container.dark{
     display:none;
   }
-  .mobile-cta{
-    display:block;
-    border-radius:40px;
-    background-color:black;
-    color:white;
-    padding:5px 10px;
-    margin-top:15%;
-    margin-inline:auto;
-    border:2px solid black;
-  }
-  .team-section{
-    width:100vw;
-    margin-top:15%;
-  }
-  .team-section p, .team-section h4{
-    width:60%;
-    margin-bottom:5%;
-  }
   .bottom-text{
-    display:none;
-  }
-  .testimonials-section .mobile-text{
-    color:white;
-    margin-bottom:8%;
-  }
-  .mobile-text{
-    font-size: clamp(12px, 1.4vw, 18px);
-    display:block;
+    position:absolute;
+    text-align:center;
+    top:10%;
   }
 }
