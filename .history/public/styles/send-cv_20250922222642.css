@@ -1,0 +1,178 @@
+.cv-container{
+  display:flex;
+  width:85%;
+  margin-inline:auto;
+  justify-content:space-between;
+  margin-top:5%;
+  margin-bottom:10%;
+  gap:1.5rem; 
+}
+.cv-container .heading{
+  max-width:80%;
+  height:100%;
+  flex: 0 0 65%;
+}
+.cv-container .heading h1{
+  margin-left:0px;
+  padding-left:0px;
+  margin-bottom:3%;
+}
+.cv-container h6{
+  font-size: clamp(0.80rem, 0.85vw, 0.9rem); 
+  font-weight:var(--semi-bold);
+  width:50%;
+}
+#cv-form textarea{
+  min-height:5vh;
+  width:85%;
+  transition: min-height 0.24s ease;
+}
+#cv-form textarea:focus,
+#cv-form textarea.active {
+  min-height: 35vh; 
+}
+
+#cv-form{
+  font-weight:100;
+  width:30%;
+  height:100%;
+  margin-block:auto;
+  flex: 0 0 25%;
+  margin-top:5%;
+  margin-right:5%;
+}
+#cv-form input{ 
+  height: 25px;
+  font-size:0.30em;
+  color:white;
+  max-width: 85%;
+}
+#cv-form label{
+  font-size: 0.65rem;
+  font-weight:var(--light-weight);
+  cursor:default;
+  margin-bottom:0px;
+}
+#cv-form #resume{
+  display:none;
+  margin:0;
+  padding:0;
+  max-height:0;
+}
+#cv-form input, #cv-form textarea, #cv-form #resume{
+  padding:3% 5%;
+  border:1px solid black;
+  background-color:black;
+  font-size: clamp(0.65rem, 1vw, 0.65rem);
+  margin-bottom:5%;
+  color:white;
+  font-family:'Poppins',sans-serif;
+  margin-top:-1px;
+  font-weight:var(--light-weight);
+}
+#resume-label{
+  display:inline-block;
+  cursor:pointer;
+  border-radius:0px;
+  margin-top:5%;
+  position:relative;
+  background-color: black;
+  min-height:6vh;
+  top:-15px;
+  min-width:95%;
+}
+#cv-form input::placeholder, #cv-form textarea::placeholder{
+    color:white;
+}
+#cv-form input:focus, #cv-form textarea:focus, #cv-form input:not(:placeholder-shown) {
+    width:100%;
+    color:white;
+    outline:none;
+}
+#cv-form input:focus::placeholder, #cv-form textarea:focus::placeholder{
+    color:white;
+}
+#cv-form input:-webkit-autofill,
+#cv-form input:-webkit-autofill:hover,
+#cv-form input:-webkit-autofill:focus,
+#cv-form textarea:-webkit-autofill,
+#cv-form textarea:-webkit-autofill:hover,
+#cv-form textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px black inset !important; /* Force black background */
+  -webkit-text-fill-color: white !important; /* Force white text */
+  background-color: black !important; /* Fallback */
+  border: 1px solid black !important;
+  transition: background-color 9999s ease-in-out 0s !important; /* Prevent flash */
+}
+#cv-form #resume-label{
+    display:flex;
+    background-color: black;
+  }
+  #resume-label label{
+    color:white;
+  }
+  #resume-label img{
+    filter:invert(100%);
+    padding-left:5%;
+    width:20%;
+  }
+/*Mobile Only*/
+@media(max-width:768px){
+  .heading .mobile-heading {
+    width: 100% !important;         /* full width to center with flex */
+    max-width: 90vw !important;     /* constrain width within viewport */
+    margin: 0 auto !important;      /* center horizontally */
+    padding: 0 !important;
+    text-align: center !important;
+    flex-shrink: 0 !important; 
+  }
+.heading {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column; /* stack children vertically */
+    width: 100%;
+    text-align: center;     /* center inline content */
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  .heading h6 {
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    flex-shrink: 0;
+    font-weight:var(--light-weight);
+  }
+  .cv-container{
+    flex-direction:column;
+    width:90vw;
+    margin-top:20%;
+  }
+  #cv-form{
+    width:70vw;
+    margin-inline:auto;
+  }
+  #cv-form input, #cv-form textarea{
+    border-radius:20px;
+    min-height:50px;
+    padding:8%;
+    font-size: clamp(16px, 2.1vw, 24px);
+    font-family:'Poppins',sans-serif;
+    font-weight:var(--light-weight);
+    min-width:70vw;
+  }
+  #cv-form #resume-label{
+    border-radius:20px;
+    min-height:50px;
+    min-width:70vw;
+  }
+  #cv-form label{
+    margin-left:5%;
+  }
+  #touch-heading{
+    display:none;
+  }
+
+}
