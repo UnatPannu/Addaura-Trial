@@ -182,9 +182,10 @@
   }
   #cv-form #resume-label{
     border-radius:20px;
-    min-height:52px;
+    min-height:50px;
     min-width:80vw;
-    margin-top:-0.5%;
+    padding:8%;
+    align-items: center;
   }
   #resume-label img{
     padding-left:5%;

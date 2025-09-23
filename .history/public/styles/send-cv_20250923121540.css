@@ -40,7 +40,7 @@
   height:100%;
   margin-block:auto;
   flex: 0 0 25%;
-  margin-top:8%;
+  margin-top:5%;
   margin-right:5%;
 }
 #cv-form input{ 
@@ -113,7 +113,7 @@
     display:flex;
     background-color: black;
   }
-  #resume-label span{
+  #resume-label label{
     color:white;
   }
   #resume-label img{
@@ -126,10 +126,7 @@
     width:21.5%;
     right:11.5%;
     border-radius:0px;
-    height:35px;
-  }
-  footer{
-    margin-top:10%;
+    height:
   }
 /*Mobile Only*/
 @media(max-width:768px){
@@ -182,15 +179,15 @@
   }
   #cv-form #resume-label{
     border-radius:20px;
-    min-height:52px;
+    min-height:50px;
     min-width:80vw;
-    margin-top:-0.5%;
   }
   #resume-label img{
     padding-left:5%;
   }
-  #resume-label span{
+  #resume-label label{
     position:relative;
+    left:-5%;
   }
   #cv-form label{
     margin-left:5%;
@@ -198,22 +195,5 @@
   #touch-heading{
     display:none;
   }
-  #cv-submit{
-    display: block;
-    border-radius: 20px;
-    width: 70vw;               /* 70% of viewport width */
-    margin-inline:auto;
-    height: 50px;
-    text-align: center;        /* center inner text */
-    right:auto;
-    position: static; 
-    margin-top:10%;
-  }
-  #cv-submit .wave{
-    display:none;
-  }
-  #cv-submit .text{
-    font-size: clamp(16px, 2.1vw, 24px);
 
-  }
 }
