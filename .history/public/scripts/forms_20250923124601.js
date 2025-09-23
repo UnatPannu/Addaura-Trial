@@ -133,8 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
       alert(`Talent form submission failed: ${error.message}`);
     }
   });
-});
-const cvForm = document.getElementById('cv-form');
+  const cvForm = document.getElementById('cv-form');
 const cvSubmitButton = document.getElementById('cv-submit');
 const cvFileInput = document.getElementById('resume');
 const cvFileNameSpan = document.getElementById('file-name');
@@ -171,3 +170,4 @@ if (cvForm && cvSubmitButton) {
     }
   });
 }
+});
