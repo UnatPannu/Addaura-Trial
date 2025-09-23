@@ -18,6 +18,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const cvFileInput = document.getElementById('cv-resume');      // Unique ID as in your HTML
   const cvFileNameSpan = document.getElementById('cv-file-name'); // Unique ID as in your HTML
 
+  if (cvForm && cvSubmitButton && cvFileInput && cvFileNameSpan) {
+    // This listener updates the file name display immediately upon file select
+    cvFileInput.addEventListener('change', () => {
+      if (cvFileInput.files.length > 0) {
+        cvFileNameSpan.textContent = cvFileInput.files[0].name;
+      } else {
+        cvFileNameSpan.textContent = 'No file chosen';
+      }
+    });
+
+    // Submit button triggers form submit programmatically (in case it is outside form)
+    cvSubmitButton.addEventListener('click', () => {
+      cvForm.requestSubmit();
+    });
+
+    // Form submission handler
+    cvForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        cvSubmitButton.disabled = true;
+        let cvAssetId = null;
+        if (cvFileInput.files.length > 0) {
+          cvAssetId = await uploadCV(cvFileInput.files[0]);  // Your existing uploadCV function
+        }
+        await sendFormData(cvForm, 'Talent', cvAssetId);  // Use 'Talent' formType as you requested
+        alert('CV submitted successfully!');
+        cvForm.reset();
+        cvFileNameSpan.textContent = 'No file chosen';
+      } catch (error) {
+        alert('Form submission failed: ' + (error.message || error));
+        console.error('SendCV form error:', error);
+      } finally {
+        cvSubmitButton.disabled = false;
+      }
+    });
+  }
   // --- Shared utility: upload CV file ---
   async function uploadCV(file) {
     if (file.size > MAX_FILE_SIZE) {
@@ -128,30 +164,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Setup Send CV form ---
   if (cvForm && cvSubmitButton && cvFileInput && cvFileNameSpan) {
-    // This listener updates the file name display immediately upon file select
+    cvSubmitButton.addEventListener('click', () => cvForm.requestSubmit());
+
     cvFileInput.addEventListener('change', () => {
-      if (cvFileInput.files.length > 0) {
-        cvFileNameSpan.textContent = cvFileInput.files[0].name;
-      } else {
-        cvFileNameSpan.textContent = 'No file chosen';
-      }
+      cvFileNameSpan.textContent = cvFileInput.files.length > 0 ? cvFileInput.files[0].name : 'No file chosen';
     });
 
-    // Submit button triggers form submit programmatically (in case it is outside form)
-    cvSubmitButton.addEventListener('click', () => {
-      cvForm.requestSubmit();
-    });
-
-    // Form submission handler
     cvForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       try {
         cvSubmitButton.disabled = true;
         let cvAssetId = null;
         if (cvFileInput.files.length > 0) {
-          cvAssetId = await uploadCV(cvFileInput.files[0]);  // Your existing uploadCV function
+          cvAssetId = await uploadCV(cvFileInput.files[0]);
         }
-        await sendFormData(cvForm, 'Talent', cvAssetId);  // Use 'Talent' formType as you requested
+        await sendFormData(cvForm, 'SendCV', cvAssetId);
         alert('CV submitted successfully!');
         cvForm.reset();
         cvFileNameSpan.textContent = 'No file chosen';

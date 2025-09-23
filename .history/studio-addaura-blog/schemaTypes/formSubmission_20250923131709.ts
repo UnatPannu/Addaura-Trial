@@ -17,7 +17,7 @@ const formSubmission = defineType({
         list: [
           { title: "Hiring", value: "Hiring" },
           { title: "Talent", value: "Talent" },
-          { title:""}
+          {title:""}
         ],
         layout: "radio",
       },
