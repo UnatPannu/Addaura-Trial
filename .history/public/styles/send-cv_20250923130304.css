@@ -61,15 +61,7 @@
   padding:0;
   max-height:0;
 }
-#cv-form #cv-file-name{
-  color: white;
-  font-size: clamp(0.5rem, 0.45vw, 0.75rem);
-  margin-top: 0.2em;
-  text-align:center;
-  margin-inline:auto;
-  display:block;
-  width:100%;
-}
+
 #cv-form input, #cv-form textarea, #cv-form #cv-resume{
   padding:3% 5%;
   border:1px solid black;

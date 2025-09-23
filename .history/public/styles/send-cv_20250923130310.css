@@ -62,7 +62,7 @@
   max-height:0;
 }
 #cv-form #cv-file-name{
-  color: white;
+    color: white;
   font-size: clamp(0.5rem, 0.45vw, 0.75rem);
   margin-top: 0.2em;
   text-align:center;
